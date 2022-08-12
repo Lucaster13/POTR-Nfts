@@ -1,0 +1,21 @@
+{
+    "type": "module",
+    "scripts": {
+        "test": "mocha test"
+    },
+    "dependencies": {
+        "@jackcom/reachduck": "^0.4.5",
+        "@reach-sh/stdlib": "^0.1.11-rc.5",
+        "mime": "^3.0.0",
+        "multiformats": "^9.7.1",
+        "nft.storage": "^7.0.0"
+    },
+    "devDependencies": {
+        "chai": "^4.3.6",
+        "chai-as-promised": "^7.1.1",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-plugin-json": "^3.1.0",
+        "mocha": "^10.0.0",
+        "eslint": "^8.13.0"
+    }
+}

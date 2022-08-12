@@ -1,0 +1,49 @@
+{
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2022
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:json/recommended",
+        "airbnb"
+    ],
+    "rules": {
+        "max-len": [1,140 ],
+        "indent": [2,4],
+        "quotes": [ 1, "double"],
+        "import/prefer-default-export": "off",
+        "array-bracket-newline": ["warn", { "minItems": 3} ],
+        "no-unused-vars": "warn",
+        "no-return-assign": 0,
+        "no-promise-executor-return": 0,
+        "no-return-await": 0,
+        "array-bracket-spacing": [1,"always"],
+        "no-console": 0,
+        "import/extensions": 0,
+        "array-element-newline": [1, {"minItems": 3}],
+        "no-undef": "off",
+        "no-use-before-define": "off",
+        "comma-dangle": "off",
+        "no-await-in-loop": "off"
+    },
+    "overrides": [
+        {
+            "files": "test.*.mjs",
+            "rules": {
+                "no-unused-expressions": "off",
+                "no-undef": "off",
+                "func-names": "off"
+            }
+        },
+        {
+            "files": "controller.mjs",
+            "rules": {
+                "no-await-in-loop": 0
+            }
+        }
+    ]
+}
