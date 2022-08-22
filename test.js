@@ -1,12 +1,13 @@
-import { getTraitsFromStaticPath } from "./traits.js";
+import { unpinNFT } from "./utils/ipfs.js";
+import { sleep } from "./_common.js";
 
-const traits = files.map(getTraitsFromStaticPath);
+async function upinAssets() {
+    for (const cid of []) {
+        await unpinNFT(cid);
+        await sleep(300);
+    }
+}
 
-const metadata = traits.map((t, idx) => {
-    const idNum = Math.round(Math.random() * 4000);
-    return {
-        name: `Protector ${idNum}`, symbol: `POTR${idNum}`, url: files[idx], properties: t
-    };
-});
+(async () => {
 
-console.log(metadata);
+})();

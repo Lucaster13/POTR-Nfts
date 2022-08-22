@@ -8,6 +8,7 @@
         "es6": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:json/recommended",
         "airbnb"
     ],
@@ -28,22 +29,10 @@
         "no-undef": "off",
         "no-use-before-define": "off",
         "comma-dangle": "off",
-        "no-await-in-loop": "off"
+        "no-await-in-loop": "off",
+        "no-unused-expressions": "off",
+        "func-names": "off",
     },
     "overrides": [
-        {
-            "files": "test.*.mjs",
-            "rules": {
-                "no-unused-expressions": "off",
-                "no-undef": "off",
-                "func-names": "off"
-            }
-        },
-        {
-            "files": "controller.mjs",
-            "rules": {
-                "no-await-in-loop": 0
-            }
-        }
     ]
 }

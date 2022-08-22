@@ -1,486 +1,482 @@
 {
-    "Background": [
-        [
-            "Gray",
-            "Blue",
-            "Orange",
-            "Red",
-            "Purple",
-            "None",
-            "Yellow",
-            "Dark",
-            "Gold",
-            "POTR"
-        ],
-        [
-            20,
-            18,
-            16,
-            13,
-            12,
-            8,
-            6,
-            3,
-            3,
-            1
-        ]
+  "Background": [
+    [
+      "Gray",
+      "Blue",
+      "Brown",
+      "Orange",
+      "Red",
+      "Purple",
+      "Green",
+      "Turquoise",
+      "Dark",
+      "Gold",
+      "POTR"
     ],
-    "Class": [
-        [
-            "Berserker",
-            "Ranger",
-            "Wizard",
-            "Crusader",
-            "Necromancer",
-            "Assassin",
-            "Archangel",
-            "Golem",
-            "Dragon"
-        ],
-        [
-            16,
-            14,
-            13,
-            12,
-            12,
-            11,
-            6,
-            5,
-            4
-        ]
+    [
+      19.38,
+      15.504,
+      11.628,
+      10.853,
+      10.078,
+      9.302,
+      8.527,
+      7.752,
+      3.876,
+      2.326,
+      0.775
+    ]
+  ],
+  "Class": [
+    [
+      "Berserker",
+      "Ranger",
+      "Wizard",
+      "Crusader",
+      "Necromancer",
+      "Assassin",
+      "Archangel",
+      "Dragon",
+      "Golem"
     ],
-    "Body": {
-        "Humanoid": [
-            [
-                "None",
-                "Beast Hide",
-                "Light Armor",
-                "Wizard Robes",
-                "Skull Shirt",
-                "Shadow Armor",
-                "Plate Armor",
-                "Dragonhide",
-                "Flame",
-                "Frost",
-                "God Armor",
-                "Angel Light",
-                "Radioactive"
-            ],
-            [
-                25,
-                10,
-                10,
-                8,
-                7,
-                7,
-                7,
-                6,
-                5,
-                5,
-                4,
-                3,
-                3
-            ]
-        ],
-        "Phantom": [
-            [
-                "Calm",
-                "Agressive",
-                "Gracious",
-                "Disturbed"
-            ],
-            [
-                50,
-                30,
-                15,
-                5
-            ]
-        ],
-        "Dragon": [
-            [
-                "Flame",
-                "Frost",
-                "Steel",
-                "Gold",
-                "Radioactive"
-            ],
-            [
-                40,
-                30,
-                15,
-                10,
-                5
-            ]
-        ],
-        "Golem": [
-            [
-                "Flame",
-                "Frost",
-                "Obsidian",
-                "Gold",
-                "Gemstone"
-            ],
-            [
-                40,
-                30,
-                15,
-                10,
-                5
-            ]
-        ]
-    },
-    "Head": {
-        "Humanoid": [
-            [
-                "Blond Hair",
-                "Brown Hair",
-                "None",
-                "Viking",
-                "Jester",
-                "Headband",
-                "Buzzcut",
-                "Wizard Hat",
-                "Manga",
-                "Flaming",
-                "Halo",
-                "Demon",
-                "Shadow Hood",
-                "Winged Helm",
-                "Master Hood",
-                "Gandalf",
-                "Robinhood",
-                "Santa",
-                "Crown"
-            ],
-            [
-                10,
-                10,
-                10,
-                8,
-                7,
-                6,
-                6,
-                6,
-                6,
-                5,
-                5,
-                5,
-                5,
-                4,
-                4,
-                3,
-                3,
-                3,
-                1
-            ]
-        ],
-        "Phantom": [
-            [
-                "Blond Hair",
-                "Brown Hair",
-                "None",
-                "Viking",
-                "Jester",
-                "Headband",
-                "Buzzcut",
-                "Wizard Hat",
-                "Manga",
-                "Flaming",
-                "Halo",
-                "Demon",
-                "Shadow Hood",
-                "Winged Helm",
-                "Master Hood",
-                "Gandalf",
-                "Robinhood",
-                "Santa",
-                "Crown"
-            ],
-            [
-                10,
-                10,
-                10,
-                8,
-                7,
-                6,
-                6,
-                6,
-                6,
-                5,
-                5,
-                5,
-                5,
-                4,
-                4,
-                3,
-                3,
-                3,
-                1
-            ]
-        ],
-        "Dragon": [
-            [
-                "None",
-                "Horns",
-                "Dark Horns",
-                "Bloody Horns",
-                "Gold Horns",
-                "Crown",
-                "Crystal Horns"
-            ],
-            [
-                47,
-                20,
-                12,
-                10,
-                7,
-                3,
-                1
-            ]
-        ],
-        "Golem": [
-            [
-                "None",
-                "Symbol",
-                "Crown"
-            ],
-            [
-                87,
-                10,
-                3
-            ]
-        ]
-    },
-    "Eyes": {
-        "Humanoid": [
-            [
-                "Black",
-                "Blue",
-                "Stone",
-                "Light",
-                "Blindfold",
-                "Laser",
-                "None",
-                "VR",
-                "Closed",
-                "3D",
-                "Thug Life"
-            ],
-            [
-                25,
-                15,
-                15,
-                10,
-                8,
-                7,
-                5,
-                5,
-                5,
-                3,
-                2
-            ]
-        ],
-        "Phantom": [
-            [
-                "Black",
-                "Blue",
-                "Stone",
-                "Light",
-                "Blindfold",
-                "Laser",
-                "None",
-                "VR",
-                "Closed",
-                "3D",
-                "Thug Life"
-            ],
-            [
-                25,
-                15,
-                15,
-                10,
-                8,
-                7,
-                5,
-                5,
-                5,
-                3,
-                2
-            ]
-        ],
-        "Dragon": [
-            [
-                "Flame",
-                "Frost",
-                "Obsidian",
-                "Steel",
-                "Gold",
-                "Closed",
-                "Radioactive",
-                "Gemstone"
-            ],
-            [
-                30,
-                20,
-                14,
-                13,
-                11,
-                6,
-                3,
-                3
-            ]
-        ],
-        "Golem": [
-            [
-                "Flame",
-                "Frost",
-                "Obsidian",
-                "Steel",
-                "Gold",
-                "Closed",
-                "Radioactive",
-                "Gemstone"
-            ],
-            [
-                30,
-                20,
-                14,
-                13,
-                11,
-                6,
-                3,
-                3
-            ]
-        ]
-    },
-    "Mouth": {
-        "Humanoid": [
-            [
-                "None",
-                "Tongue",
-                "Frown",
-                "Smile",
-                "Joint",
-                "Tooth"
-            ],
-            [
-                67,
-                14,
-                8,
-                6,
-                3,
-                2
-            ]
-        ],
-        "Phantom": [
-            [
-                "None",
-                "Tongue",
-                "Frown",
-                "Smile",
-                "Joint",
-                "Tooth"
-            ],
-            [
-                67,
-                14,
-                8,
-                6,
-                3,
-                2
-            ]
-        ],
-        "Dragon": [
-            [
-                "None",
-                "Fangs",
-                "Dark Fangs",
-                "Bloody Fangs",
-                "Gold Fangs",
-                "Tongue",
-                "Joint",
-                "Crystal Fangs"
-            ],
-            [
-                40,
-                20,
-                10,
-                10,
-                7,
-                6,
-                4,
-                3
-            ]
-        ],
-        "Golem": [
-            [
-                "None",
-                "Smile",
-                "Tongue",
-                "Frown",
-                "Joint",
-                "Tooth"
-            ],
-            [
-                50,
-                20,
-                10,
-                10,
-                6,
-                4
-            ]
-        ]
-    },
-    "Back": {
-        "Humanoid": [
-            [
-                "None",
-                "Cape",
-                "Sword",
-                "Dragon Wings",
-                "Angel Wings"
-            ],
-            [
-                70,
-                13,
-                7,
-                6,
-                4
-            ]
-        ],
-        "Phantom": [
-            [
-                "None",
-                "Cape",
-                "Sword",
-                "Dragon Wings",
-                "Angel Wings"
-            ],
-            [
-                70,
-                13,
-                7,
-                6,
-                4
-            ]
-        ],
-        "Dragon": [
-            [
-                "Dragon Wings",
-                "None"
-            ],
-            [
-                70,
-                30
-            ]
-        ],
-        "Golem": [
-            [
-                "None"
-            ],
-            [
-                100
-            ]
-        ]
-    }
+    [
+      24.691,
+      18.519,
+      16.049,
+      12.346,
+      9.877,
+      7.407,
+      4.938,
+      3.704,
+      2.469
+    ]
+  ],
+  "Body": {
+    "Humanoid": [
+      [
+        "None",
+        "Beast Hide",
+        "Light Armor",
+        "Wizard Robes",
+        "Skull Shirt",
+        "Shadow Armor",
+        "Plate Armor",
+        "Dragon Hide",
+        "Templar",
+        "Flame",
+        "Frost",
+        "Angel Light",
+        "God Armor",
+        "Radioactive"
+      ],
+      [
+        16.234,
+        12.987,
+        11.688,
+        10.39,
+        9.091,
+        7.792,
+        6.494,
+        5.844,
+        5.195,
+        4.545,
+        3.896,
+        3.247,
+        1.948,
+        0.649
+      ]
+    ],
+    "Phantom": [
+      [
+        "Calm",
+        "Agressive",
+        "Gracious",
+        "Disturbed"
+      ],
+      [
+        50.0,
+        30.0,
+        15.0,
+        5.0
+      ]
+    ],
+    "Dragon": [
+      [
+        "Flame",
+        "Frost",
+        "Steel",
+        "Gold",
+        "Radioactive"
+      ],
+      [
+        40.0,
+        30.0,
+        15.0,
+        10.0,
+        5.0
+      ]
+    ],
+    "Golem": [
+      [
+        "Flame",
+        "Frost",
+        "Obsidian",
+        "Gold",
+        "Gemstone"
+      ],
+      [
+        40.0,
+        30.0,
+        15.0,
+        10.0,
+        5.0
+      ]
+    ]
+  },
+  "Head": {
+    "Humanoid": [
+      [
+        "Blond Hair",
+        "Brown Hair",
+        "None",
+        "Viking",
+        "Headband",
+        "Bandana",
+        "Buzzcut",
+        "Wizard Hat",
+        "Manga",
+        "Flaming",
+        "Halo",
+        "Demon",
+        "Winged Helm",
+        "Jester",
+        "Gandalf",
+        "Robinhood",
+        "Santa",
+        "Crown"
+      ],
+      [
+        13.298,
+        12.234,
+        10.638,
+        7.979,
+        7.447,
+        6.915,
+        6.383,
+        5.851,
+        5.319,
+        4.787,
+        4.255,
+        3.723,
+        3.191,
+        2.66,
+        2.128,
+        1.596,
+        1.064,
+        0.532
+      ]
+    ],
+    "Phantom": [
+      [
+        "Blond Hair",
+        "Brown Hair",
+        "None",
+        "Viking",
+        "Headband",
+        "Bandana",
+        "Buzzcut",
+        "Wizard Hat",
+        "Manga",
+        "Flaming",
+        "Halo",
+        "Demon",
+        "Winged Helm",
+        "Jester",
+        "Gandalf",
+        "Robinhood",
+        "Santa",
+        "Crown"
+      ],
+      [
+        13.298,
+        12.234,
+        10.638,
+        7.979,
+        7.447,
+        6.915,
+        6.383,
+        5.851,
+        5.319,
+        4.787,
+        4.255,
+        3.723,
+        3.191,
+        2.66,
+        2.128,
+        1.596,
+        1.064,
+        0.532
+      ]
+    ],
+    "Dragon": [
+      [
+        "None",
+        "Horns",
+        "Dark Horns",
+        "Bloody Horns",
+        "Gold Horns",
+        "Crown",
+        "Crystal Horns"
+      ],
+      [
+        47.0,
+        20.0,
+        12.0,
+        10.0,
+        7.0,
+        3.0,
+        1.0
+      ]
+    ],
+    "Golem": [
+      [
+        "None",
+        "Symbol",
+        "Crown"
+      ],
+      [
+        87.0,
+        10.0,
+        3.0
+      ]
+    ]
+  },
+  "Eyes": {
+    "Humanoid": [
+      [
+        "Black",
+        "Blue",
+        "Stone",
+        "Light",
+        "Laser",
+        "Glasses",
+        "VR",
+        "Closed",
+        "3D",
+        "Thug Life"
+      ],
+      [
+        27.778,
+        16.667,
+        16.667,
+        11.111,
+        7.778,
+        5.556,
+        5.556,
+        3.333,
+        3.333,
+        2.222
+      ]
+    ],
+    "Phantom": [
+      [
+        "Black",
+        "Blue",
+        "Stone",
+        "Light",
+        "Laser",
+        "Glasses",
+        "VR",
+        "Closed",
+        "3D",
+        "Thug Life"
+      ],
+      [
+        27.778,
+        16.667,
+        16.667,
+        11.111,
+        7.778,
+        5.556,
+        5.556,
+        3.333,
+        3.333,
+        2.222
+      ]
+    ],
+    "Dragon": [
+      [
+        "Flame",
+        "Frost",
+        "Obsidian",
+        "Steel",
+        "Gold",
+        "Closed",
+        "Radioactive",
+        "Gemstone"
+      ],
+      [
+        30.0,
+        20.0,
+        14.0,
+        13.0,
+        11.0,
+        6.0,
+        3.0,
+        3.0
+      ]
+    ],
+    "Golem": [
+      [
+        "Flame",
+        "Frost",
+        "Obsidian",
+        "Steel",
+        "Gold",
+        "Closed",
+        "Radioactive",
+        "Gemstone"
+      ],
+      [
+        30.0,
+        20.0,
+        14.0,
+        13.0,
+        11.0,
+        6.0,
+        3.0,
+        3.0
+      ]
+    ]
+  },
+  "Mouth": {
+    "Humanoid": [
+      [
+        "Normal",
+        "Tongue",
+        "Frown",
+        "Smile",
+        "Joint",
+        "Open",
+        "Tooth"
+      ],
+      [
+        63.81,
+        13.333,
+        7.619,
+        5.714,
+        4.762,
+        2.857,
+        1.905
+      ]
+    ],
+    "Phantom": [
+      [
+        "Normal",
+        "Tongue",
+        "Frown",
+        "Smile",
+        "Joint",
+        "Tooth"
+      ],
+      [
+        67.0,
+        14.0,
+        8.0,
+        6.0,
+        3.0,
+        2.0
+      ]
+    ],
+    "Dragon": [
+      [
+        "Normal",
+        "Fangs",
+        "Dark Fangs",
+        "Bloody Fangs",
+        "Gold Fangs",
+        "Tongue",
+        "Joint",
+        "Crystal Fangs"
+      ],
+      [
+        40.0,
+        20.0,
+        10.0,
+        10.0,
+        7.0,
+        6.0,
+        4.0,
+        3.0
+      ]
+    ],
+    "Golem": [
+      [
+        "Normal",
+        "Smile",
+        "Tongue",
+        "Frown",
+        "Joint",
+        "Tooth"
+      ],
+      [
+        50.0,
+        20.0,
+        10.0,
+        10.0,
+        6.0,
+        4.0
+      ]
+    ]
+  },
+  "Back": {
+    "Humanoid": [
+      [
+        "None",
+        "Sword",
+        "Dragon Wings",
+        "Angel Wings"
+      ],
+      [
+        80.459,
+        8.046,
+        6.897,
+        4.598
+      ]
+    ],
+    "Phantom": [
+      [
+        "None",
+        "Cape",
+        "Sword",
+        "Dragon Wings",
+        "Angel Wings"
+      ],
+      [
+        70.0,
+        13.0,
+        7.0,
+        6.0,
+        4.0
+      ]
+    ],
+    "Dragon": [
+      [
+        "Dragon Wings",
+        "None"
+      ],
+      [
+        70.0,
+        30.0
+      ]
+    ],
+    "Golem": [
+      [
+        "None"
+      ],
+      [
+        100.0
+      ]
+    ]
+  }
 }
