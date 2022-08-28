@@ -33,6 +33,7 @@ export async function pinNFT(imagePath) {
     // create a new NFTStorage client using API key
     const nftStorage = new NFTStorage({ token: NFT_STORAGE_API_KEY });
     const cid = await nftStorage.storeBlob(image);
+    console.log("Pin NFT Success", imagePath);
     return cid;
 }
 

@@ -35,9 +35,9 @@ export default async function deleteAsa(acc, asaId) {
         const dtx = (await algodClient.sendRawTransaction(rawSignedTxn).do());
 
         // Wait for confirmation
-        const confirmedTxn = await algosdk.waitForConfirmation(algodClient, dtx.txId, 4);
+        await algosdk.waitForConfirmation(algodClient, dtx.txId, 4);
         // Get the completed Transaction
-        console.log(`Transaction ${dtx.txId} confirmed in round ${confirmedTxn["confirmed-round"]}`);
+        console.log(`Successfully deleted ${asaId}`);
     } catch (e) {
         throw new Error(e);
     }

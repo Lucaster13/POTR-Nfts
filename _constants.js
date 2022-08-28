@@ -16,7 +16,7 @@ export const OPT_IN_FEE = 100000; // microalgos
 export const REACH_NETWORK = "TestNet";
 export const REACH_PROVIDER_ENV = {
     REACH_CONNECTOR_MODE: "ALGO",
-    REACH_ISOLATED_NETWORK: "no",
+    REACH_ISOLATED_NETWORK: "yes",
 };
 
 /*
@@ -59,5 +59,7 @@ const token = "";
 const server = `https://${REACH_NETWORK.toLowerCase()}-api.algonode.cloud`;
 const port = 443;
 export const ALGOSDK_PARAMS = [
-    token, server, port,
+    token,
+    server,
+    port,
 ];

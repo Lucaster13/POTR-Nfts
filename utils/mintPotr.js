@@ -1,6 +1,6 @@
 import mintAsa from "./mintAsa.js";
 
-export default async function mintPotr(id, cid, traits) {
+export default async function mintPotr(adminAcc, id, cid, traits) {
     try {
         // create traits metadata object
         const idString = String(id).padStart(4, "0");
@@ -14,7 +14,7 @@ export default async function mintPotr(id, cid, traits) {
         // encode the metadata for asset note
         const encodedNote = new TextEncoder().encode(JSON.stringify(metadata));
         // mint potr
-        asaId = await mintAsa({
+        const asaId = await mintAsa({
             acc: adminAcc,
             supply: 1,
             sym: `POTR${idString}`,
@@ -22,9 +22,10 @@ export default async function mintPotr(id, cid, traits) {
             url: `ipfs://${cid}`,
             note: encodedNote,
         });
+        console.log(`Mint Success - POTR${idString}`);
         // return asa id and cid
         return { asaId, cid };
     } catch (e) {
-        throw new Error(e);
+        throw new Error(e.message);
     }
 }

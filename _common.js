@@ -1,3 +1,4 @@
+import Bottleneck from "bottleneck";
 import { execFile } from "child_process";
 import {
     OPT_IN_FEE,
@@ -5,7 +6,7 @@ import {
     SECS_PER_DAY,
     SECS_PER_HOUR,
     SECS_PER_MIN,
-    TXN_FEE,
+    TXN_FEE
 } from "./_constants.js";
 
 export const execPython = (prog) => new Promise((success, error) => {
@@ -18,6 +19,11 @@ export const execPython = (prog) => new Promise((success, error) => {
         console.log(`successful execution of ${prog}`);
         success(stdout.split("\n").filter((x) => x.length));
     });
+});
+
+export const makeRateLimiter = (rps, threads = 3) => new Bottleneck({
+    maxConcurrent: threads,
+    minTime: 1000 / rps
 });
 
 // all ctc params are for reach, the participant is the name of the deployer participant in the contracts

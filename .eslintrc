@@ -1,8 +1,15 @@
 {
     "parserOptions": {
         "sourceType": "module",
-        "ecmaVersion": 2022
+        "ecmaVersion": "latest",
+        "requireConfigFile": false,
+        "babelOptions": {
+            "plugins": [
+                "@babel/plugin-syntax-import-assertions"
+            ],
+        },
     },
+    "parser": "@babel/eslint-parser",
     "env": {
         "node": true,
         "es6": true
@@ -12,6 +19,7 @@
         "plugin:json/recommended",
         "airbnb"
     ],
+
     "rules": {
         "max-len": [1,140 ],
         "indent": [2,4],
@@ -32,6 +40,10 @@
         "no-await-in-loop": "off",
         "no-unused-expressions": "off",
         "func-names": "off",
+        "no-plusplus": "off",
+        "no-restricted-syntax": "off",
+        "no-loop-func": "off",
+        "no-unreachable": "warn"
     },
     "overrides": [
     ]
