@@ -13,16 +13,20 @@ export default async function mintPotr(adminAcc, id, cid, traits) {
         };
         // encode the metadata for asset note
         const encodedNote = new TextEncoder().encode(JSON.stringify(metadata));
-        // mint potr
-        const asaId = await mintAsa({
+
+        const mintParams = {
             acc: adminAcc,
             supply: 1,
             sym: `POTR${idString}`,
             name: `Protector ${idString}`,
             url: `ipfs://${cid}`,
             note: encodedNote,
-        });
+        };
+
+        // mint potr
+        const asaId = await mintAsa(mintParams);
         console.log(`Mint Success - POTR${idString}`);
+
         // return asa id and cid
         return { asaId, cid };
     } catch (e) {

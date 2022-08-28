@@ -18,7 +18,7 @@ loadReachWithOpts(loadStdlib, {
 
 // CREATE ALL ASSETS
 (async () => {
-    return;
+    // return;
     // loop 6000 times
     const asaIds = [];
     let retryIdxs = [];
@@ -44,8 +44,9 @@ loadReachWithOpts(loadStdlib, {
     while (retryIdxs.length) {
         await Promise.all(retryIdxs.map(async (idx) => {
             try {
+                const { cid } = cids[idx];
                 // create potr
-                const { asaId } = await rateLimitedMintPotr(admin, idx + 1, cids[idx], potrTraits[idx]);
+                const { asaId } = await rateLimitedMintPotr(admin, idx + 1, cid, potrTraits[idx]);
                 // add to asaids
                 asaIds.push(asaId);
                 // remove from retries
@@ -68,7 +69,7 @@ loadReachWithOpts(loadStdlib, {
     const reach = createReachAPI();
     const admin = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
     const connector = createConnectorAPI();
-    const limiter = makeRateLimiter(60, null);
+    const limiter = makeRateLimiter(60, 60);
     const rateLimitedDeleteAsa = limiter.wrap(deleteAsa);
     let assets = [];
     do {
