@@ -1,50 +1,49 @@
 {
     "parserOptions": {
         "sourceType": "module",
-        "ecmaVersion": "latest",
-        "requireConfigFile": false,
-        "babelOptions": {
-            "plugins": [
-                "@babel/plugin-syntax-import-assertions"
-            ],
-        },
+        "ecmaVersion": 2022,
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
-    "parser": "@babel/eslint-parser",
+    "settings": {
+        "import/resolver": {
+            "typescript": true,
+            "node": true
+        }
+    },
+    "parser": "@typescript-eslint/parser",
     "env": {
-        "node": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
+    "plugins": ["react-hooks", "@typescript-eslint"],
     "extends": [
         "eslint:recommended",
+        "plugin:react-hooks/recommended",
         "plugin:json/recommended",
-        "airbnb"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:import/typescript",
+        "airbnb",
+        "prettier"
     ],
-
     "rules": {
-        "max-len": [1,140 ],
-        "indent": [2,4],
-        "quotes": [ 1, "double"],
+        "camelcase": "off",
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "import/extensions": "off",
+        "@typescript-eslint/no-explicit-any": "off",
         "import/prefer-default-export": "off",
-        "array-bracket-newline": ["warn", { "minItems": 3} ],
-        "no-unused-vars": "warn",
-        "no-return-assign": 0,
-        "no-promise-executor-return": 0,
-        "no-return-await": 0,
-        "array-bracket-spacing": [1,"always"],
-        "no-console": 0,
-        "import/extensions": 0,
-        "array-element-newline": [1, {"minItems": 3}],
-        "no-undef": "off",
-        "no-use-before-define": "off",
-        "comma-dangle": "off",
+        "no-param-reassign": "off",
         "no-await-in-loop": "off",
-        "no-unused-expressions": "off",
-        "func-names": "off",
+        "no-nested-ternary": "off",
+        "no-return-assign": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-console": "off",
+        "no-promise-executor-return": "off",
+        "no-constant-condition": "off",
         "no-plusplus": "off",
-        "no-restricted-syntax": "off",
         "no-loop-func": "off",
-        "no-unreachable": "warn"
-    },
-    "overrides": [
-    ]
+        "consistent-return": "off"x
+    }
 }

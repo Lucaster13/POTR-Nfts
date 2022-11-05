@@ -1,6 +1,7 @@
 .vscode
 node_modules
 .DS_Store
-.secrets.js
+.secrets.*
 .ipynb_checkpoints
 nfts
+*.xlsx
