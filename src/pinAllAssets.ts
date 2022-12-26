@@ -3,6 +3,7 @@ import { CIDString } from "nft.storage";
 import { makeRateLimiter, pinNFT, writeToJson } from "./utils";
 
 const NFT_PATH_PREFIX = "../nfts";
+
 // pins every asset inside /nfts folder to ipfs
 (async () => {
     const imagePaths = fs

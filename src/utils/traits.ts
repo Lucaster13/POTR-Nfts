@@ -1,4 +1,4 @@
-import { TRAIT_WEIGHTS } from "../output";
+import { TRAIT_WEIGHTS } from "../input";
 import { BaseClassType, ClassType, PotrTraits, TraitType } from "../types";
 
 const TRAIT_TYPES = Object.keys(TRAIT_WEIGHTS) as TraitType[];
@@ -80,7 +80,7 @@ export function getTraitsFromFilePrefix(filePrefix: string): PotrTraits {
     };
 
     // determine the rest of the traits and add them to traits object
-    Tr.forEach((traitType) => {
+    TRAIT_TYPES.forEach((traitType) => {
         const baseClass = getBaseClass(traits.Class);
         const traitIdx = traitIdxs[traitType];
         traits[traitType] = TRAIT_WEIGHTS[traitType][baseClass].traits[traitIdx];

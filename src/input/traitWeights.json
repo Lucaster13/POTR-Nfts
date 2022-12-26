@@ -1,0 +1,186 @@
+{
+    "Background": {
+        "traits": [
+            "Gray",
+        "Light Blue",
+        "Orange",
+        "Red",
+        "Green",
+        "Light Red",
+        "Purple",
+        "Blue",
+        "Light Purple",
+        "Teal",
+        "Dark", 
+        "Gold",
+        "POTR" ],
+        "weights": [900,
+        800,
+        700,
+        600,
+        600,
+        500,
+        500,
+        400,
+        350,
+        300,
+        200,
+        100,
+        50]
+    },
+    "Class": {
+        "traits": ["Berserker", "Ranger", "Wizard", "Crusader", "Necromancer", "Assassin", "Phantom", "Archangel", "Dragon", "Golem"],
+        "weights": [1200, 900, 700, 600, 600, 600, 500, 400, 300, 200]
+    },
+    "Body": {
+        "Humanoid": {
+            "traits": [
+                "None",
+                "Beast Hide",
+                "Light Armor",
+                "Wizard Robe",
+                "Shadow Armor",
+                "Skull Shirt",
+                "Plate Armor",
+                "Dragonhide",
+                "Flame",
+                "Frost",
+                "God Armor",
+                "Angel Light",
+                "Radioactive"
+            ],
+            "weights": [1000, 900, 800, 700, 600, 420, 200, 100, 80, 80, 50, 40, 30]
+        },
+        "Phantom": {
+            "traits": ["Calm", "Aggressive", "Gracious", "Disturbed"],
+            "weights": [200, 150, 100, 50]
+        },
+        "Dragon": {
+            "traits": ["Flame", "Frost", "Sand", "Steel", "Gold", "Radioactive", "Ancient"],
+            "weights": [50, 40, 35, 30, 20, 15, 10]
+        },
+        "Golem": {
+            "traits": ["Frost", "Flame", "Sand", "Obsidian", "Gold", "Gemstone", "Crystal"],
+            "weights": [65, 60, 55, 50, 35, 25, 10]
+        }
+    },
+    "Head": {
+        "Humanoid": {
+            "traits": [
+                "Blond Hair",
+                "Brown Hair",
+                "None",
+                "Viking",
+                "Headband",
+                "Bandana",
+                "Buzzcut",
+                "Wizard Hat",
+                "Manga",
+                "Flaming",
+                "Halo",
+                "Demon",
+                "Winged Helm",
+                "Thoughts",
+                "Jester",
+                "Party Hat",
+                "Gandalf",
+                "Robinhood",
+                "Santa",
+                "Crown"
+            ],
+            "weights": [730, 620, 550, 550, 480, 400, 340, 300, 250, 230, 200, 160, 130, 110, 100, 90, 80, 70, 60, 50]
+        },
+        "Phantom": {
+            "traits": [
+                "Blond Hair",
+                "Brown Hair",
+                "None",
+                "Viking",
+                "Headband",
+                "Bandana",
+                "Buzzcut",
+                "Wizard Hat",
+                "Manga",
+                "Flaming",
+                "Halo",
+                "Demon",
+                "Winged Helm",
+                "Thoughts",
+                "Jester",
+                "Party Hat",
+                "Gandalf",
+                "Robinhood",
+                "Santa",
+                "Crown"
+            ],
+            "weights": [730, 620, 550, 550, 480, 400, 340, 300, 250, 230, 200, 160, 130, 110, 100, 90, 80, 70, 60, 50]
+        },
+        "Dragon": {
+            "traits": ["None", "Horns", "Dark Horns", "Bloody Horns", "Thoughts", "Halo", "Horn", "Ancient Horns"],
+            "weights": [40, 35, 28, 25, 24, 20, 18, 10]
+        },
+        "Golem": {
+            "traits": ["None", "Thoughts", "Halo", "Horn", "Crown", "Crystal Horn"],
+            "weights": [120, 
+            60,
+            50,
+            35,
+            25,
+            10]
+        }
+    },
+    "Eyes": {
+        "Humanoid": {
+            "traits": ["Black", "Blue", "Stone", "Light", "Laser", "Glasses", "VR", "X", "Closed", "One Eye", "3D", "Wink", "Crystal", "Ancient", "Thug Life"],
+            "weights": [1000, 780, 680, 640, 580, 480, 370, 240, 200, 180, 100, 80, 70, 50, 50]
+        },
+        "Phantom": {
+            "traits": ["Black", "Blue", "Stone", "Light", "Laser", "Glasses", "VR", "X", "Closed", "One Eye", "3D", "Wink", "Crystal", "Ancient", "Thug Life"],
+            "weights": [1000, 780, 680, 640, 580, 480, 370, 240, 200, 180, 100, 80, 70, 50, 50]
+        },
+        "Dragon": {
+            "traits": ["Black", "Closed",  "X", "Thug Life"],
+            "weights": [100, 60, 30, 10]
+        },
+        "Golem": {
+            "traits": ["Black", "Closed",  "X", "Thug Life"],
+            "weights": [160, 80, 40, 20]
+        }
+    },
+    "Mouth": {
+        "Humanoid": {
+            "traits": ["Normal", "Tongue", "Frown", "Open", "Smile", "Joint", "Tooth"],
+            "weights": [3400, 1000, 600, 300, 120, 60, 20]
+        },
+        "Phantom": {
+            "traits": ["Normal", "Tongue", "Frown", "Open", "Smile", "Joint", "Tooth"],
+            "weights": [3400, 1000, 600, 300, 120, 60, 20]
+        },
+        "Dragon": {
+            "traits": ["Normal", "Fangs", "Dark Fangs", "Bloody Fangs", "Gold Fangs", "Tongue", "Joint", "Ancient Fangs"],
+            "weights": [80, 40, 30, 20, 15, 10, 3, 2]
+        },
+        "Golem": {
+            "traits": ["Normal", "Smile", "Tongue", "Frown", "Joint", "Tooth"],
+            "weights": [150, 60, 40, 30, 15, 5]
+        }
+    },
+    "Back": {
+        "Humanoid": {
+            "traits": ["None", "Sword", "Common Companion", "Rare Companion", "Angel Wings", "Shadow", "Ultra Rare Companion", "Legendary Companion"],
+            "weights": [3200, 800, 600, 350, 250, 150, 100, 50]
+        },
+        "Phantom": {
+            "traits": ["None", "Sword", "Common Companion", "Rare Companion", "Angel Wings", "Shadow", "Ultra Rare Companion", "Legendary Companion"],
+            "weights": [3200, 800, 600, 350, 250, 150, 100, 50]
+        },
+        "Dragon": {
+            "traits": ["Dragon Wings", "Common Companion", "None", "Rare Companion", "Ultra Rare Companion", "Legendary Companion"],
+            "weights": [70, 45, 40, 25, 15, 5]
+        },
+        "Golem": {
+            "traits": ["None", "Spikes", "Common Companion", "Rare Companion", "Ultra Rare Companion", "Legendary Companion"],
+            "weights": [120, 70, 55, 30, 15, 10]
+        }
+    }
+}
