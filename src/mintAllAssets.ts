@@ -1,6 +1,6 @@
 import { createReachAPI, loadReachWithOpts, ReachAccount } from "@jackcom/reachduck";
 import { loadStdlib } from "@reach-sh/stdlib";
-import { CIDS, POTR_TRAITS } from "./output";
+import { CIDS, POTR_TRAITS } from "./data";
 import { AsaId, PotrTraits } from "./types";
 
 import { makeRateLimiter, mintPotr, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, writeToJson } from "./utils";

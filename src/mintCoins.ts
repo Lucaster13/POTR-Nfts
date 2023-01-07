@@ -15,7 +15,7 @@ loadReachWithOpts(loadStdlib, {
     // sign into admin account
     const admin: ReachAccount = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
     // create params for coin asa's
-    const coinInfo = [
+    const coinInfo: Array<[string,string,number]> = [
         ["Bronze Coin", "POTRBC", 1000],
         ["Silver Coin", "POTRSC", 500],
         ["Gold Coin", "POTRGC", 100],

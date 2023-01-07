@@ -1,7 +1,7 @@
 import { ReachAccount } from "@jackcom/reachduck";
 import { CIDString } from "nft.storage";
 import { AsaId, PotrTraits } from "../types";
-import mintAsa from "./mintAsa.js";
+import mintAsa, { MintParams } from "./mintAsa.js";
 
 export default async (adminAcc: ReachAccount, id: number, cid: CIDString, traits: PotrTraits) => {
     try {
@@ -19,7 +19,7 @@ export default async (adminAcc: ReachAccount, id: number, cid: CIDString, traits
         const encodedNote = new TextEncoder().encode(JSON.stringify(metadata));
 
         // create params to mint asset
-        const mintParams = {
+        const mintParams: MintParams = {
             acc: adminAcc,
             supply: 1,
             sym: `POTR${idString}`,

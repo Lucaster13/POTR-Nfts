@@ -1,5 +1,15 @@
-import { createReachAPI } from "@jackcom/reachduck";
+import { createReachAPI, ReachAccount } from "@jackcom/reachduck";
 import { ALGOSDK_PARAMS } from "./algo";
+
+export interface MintParams {
+    acc: ReachAccount,
+    supply: number,
+    sym: string,
+    name: string,
+    url: string,
+    metadataHash?: string,
+    note?: Uint8Array
+}
 
 export default async ({
     acc,
@@ -7,9 +17,9 @@ export default async ({
     sym,
     name,
     url,
-    metadataHash = null,
-    note = null, // this is the arc69 traits data encoded
-}) => {
+    metadataHash = undefined,
+    note = undefined, // this is the arc69 traits data encoded
+}: MintParams) => {
     try {
         console.log(`Minting ${name}...`);
         const reach = createReachAPI();

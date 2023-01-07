@@ -1,4 +1,4 @@
-import { TRAIT_WEIGHTS } from "../input";
+import { TRAIT_WEIGHTS } from "../data";
 import { BaseClassType, ClassType, PotrTraits, TraitType } from "../types";
 
 const TRAIT_TYPES = Object.keys(TRAIT_WEIGHTS) as TraitType[];
