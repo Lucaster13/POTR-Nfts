@@ -1,17 +1,19 @@
 import { createReachAPI, ReachAccount } from "@jackcom/reachduck";
-import { ALGOSDK_PARAMS } from "./algo";
+import { makeRateLimiter } from "./common";
+import { ALGOSDK_PARAMS } from "./constants";
 
-export interface MintParams {
+export interface MintAsaParams {
     acc: ReachAccount,
     supply: number,
     sym: string,
     name: string,
     url: string,
     metadataHash?: string,
-    note?: Uint8Array
+    note: Uint8Array
 }
 
-export default async ({
+// rate limit to 60 tps with 60 threads
+export default makeRateLimiter(60, 60).wrap(async ({
     acc,
     supply,
     sym,
@@ -19,7 +21,7 @@ export default async ({
     url,
     metadataHash = undefined,
     note = undefined, // this is the arc69 traits data encoded
-}: MintParams) => {
+}: MintAsaParams) => {
     try {
         console.log(`Minting ${name}...`);
         const reach = createReachAPI();
@@ -89,4 +91,4 @@ export default async ({
     } catch (e) {
         throw new Error(e);
     }
-};
+});

@@ -13,15 +13,15 @@ interface PotrTraits {
     Eyes: string;
     Mouth: string;
     Back: string;
-    [x: string]: string | number;
+    Power: number
 }
 
-interface NftMetadata {
-    symbol?: string;
-    cid?: string;
-    id: AsaId;
-    properties?: PotrTraits;
-    refresh?: boolean;
+interface Arc69Metadata {
+    standard: "arc69",
+    description: string,
+    external_url: string,
+    mime_type: "image/png",
+    properties: PotrTraits | {},
 }
 
-export { PotrTraits, NftMetadata, TraitType, TraitValue, BaseClassType, ClassType };
+export { PotrTraits, Arc69Metadata, TraitType, TraitValue, BaseClassType, ClassType };

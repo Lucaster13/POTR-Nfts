@@ -1,9 +1,9 @@
 import { createReachAPI, loadReachWithOpts, ReachAccount } from "@jackcom/reachduck";
 import { loadStdlib } from "@reach-sh/stdlib";
 import { CIDS, POTR_TRAITS } from "./data";
-import { AsaId, PotrTraits } from "./types";
+import { AsaId, AsaIds, PotrTraits } from "./types";
 
-import { makeRateLimiter, mintPotr, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, writeToJson } from "./utils";
+import { mintPotr, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, readFromJson, writeToJson } from "./utils";
 
 // load reach
 loadReachWithOpts(loadStdlib, {
@@ -12,33 +12,35 @@ loadReachWithOpts(loadStdlib, {
     providerEnv: REACH_PROVIDER_ENV,
 });
 
+const POTR_CIDS = CIDS.potr;
+
 // MINTS ALL ASSETS IN CIDS OBJECT
 (async () => {
     // loop 6000 times
-    const asaIds: AsaId[] = [];
+    const potrAsaIds: AsaId[] = [];
     let retryIdxs: number[] = [];
 
     // get acc
     const reach = createReachAPI();
     const admin: ReachAccount = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
-    const limiter = makeRateLimiter(60, 60);
-    const rateLimitedMintPotr = limiter.wrap(mintPotr);
+
+    // first loop of minting potrs
     await Promise.all(
-        CIDS.map(async ({ cid, idx }) => {
+        POTR_CIDS.map(async ({ cid, idx }) => {
             try {
                 // get traits from POTR_TRAIS object with the index that matches this cid
                 const traits = POTR_TRAITS[idx] as PotrTraits;
                 // create potr (its id is always 1 + its index )
-                const { asaId } = await rateLimitedMintPotr(admin, idx + 1, cid, traits);
-                // add to asaids
-                asaIds.push(asaId);
+                const { asaId } = await mintPotr(admin, idx + 1, cid, traits);
+                // add to potrAsaIds
+                potrAsaIds.push(asaId);
             } catch (e) {
                 retryIdxs.push(idx);
             }
         })
     );
 
-    console.log(`${asaIds.length} nfts successfully minted on first pass`);
+    console.log(`${potrAsaIds.length} nfts successfully minted on first pass`);
     console.log(`${retryIdxs.length} nfts failed to mint on first pass`);
 
     while (retryIdxs.length) {
@@ -49,9 +51,9 @@ loadReachWithOpts(loadStdlib, {
                     // get traits from POTR_TRAIS object with the index that matches this cid
                     const traits = POTR_TRAITS[idx] as PotrTraits;
                     // create potr
-                    const { asaId } = await rateLimitedMintPotr(admin, idx + 1, cid, traits);
-                    // add to asaids
-                    asaIds.push(asaId);
+                    const { asaId } = await mintPotr(admin, idx + 1, cid, traits);
+                    // add to potrAsaIds
+                    potrAsaIds.push(asaId);
                     // remove from retries
                     retryIdxs = retryIdxs.filter((retryIdx) => retryIdx !== idx);
                 } catch (e) {
@@ -59,12 +61,16 @@ loadReachWithOpts(loadStdlib, {
                 }
             })
         );
-        console.log(`${asaIds.length} nfts successfully minted on retry`);
+        console.log(`${potrAsaIds.length} nfts successfully minted on retry`);
         console.log(`${retryIdxs.length} nfts failed to mint on retry`);
     }
 
-    console.log(`${asaIds.length} potrs made`);
+    console.log(`${potrAsaIds.length} potrs made`);
 
-    // save asa ids
-    writeToJson("potrAsaIds", asaIds);
+    // update asa id json
+    const { coin: coinAsaIds } = readFromJson<AsaIds>("asaIds");
+    writeToJson({ potr: potrAsaIds, coin: coinAsaIds }, "asaIds");
+
+    // print asa ids to the console
+    console.log("potr asa ids successfully written to json");
 })();

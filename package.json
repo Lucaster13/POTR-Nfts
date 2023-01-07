@@ -1,7 +1,22 @@
 {
     "type": "module",
     "scripts": {
-        "test": "mocha test"
+        "exec-typescript": "ts-node-esm --experimental-specifier-resolution=node $cmd",
+        "pin-potrs": "npm run exec-typescript ./src/pin-potrs.ts",
+        "pin-coins": "npm run exec-typescript ./src/pin-coins.ts",
+        "pin-all-assets": "npm run pin-coins && npm run pin-potrs",
+        "unpin-potrs": "npm run exec-typescript ./src/unpin-potrs.ts",
+        "unpin-coins": "npm run exec-typescript ./src/unpin-coins.ts",
+        "unpin-all-assets": "npm run unpin-coins && npm run unpin-potrs",
+        "mint-potrs": "npm run exec-typescript ./src/mint-potrs.ts",
+        "mint-coins": "npm run exec-typescript ./src/mint-coins.ts",
+        "mint-all-assets": "npm run mint-coins && npm run mint-potrs",
+        "destroy-potrs": "npm run exec-typescript ./src/destroy-potrs.ts",
+        "destroy-coins": "npm run exec-typescript ./src/destroy-coins.ts",
+        "force-destroy-assets": "npm run exec-typescript ./src/destroy-assets.ts",
+        "clean-potrs": "npm run unpin-potrs && npm run destoy-potrs",
+        "clean-coins": "npm run unpin-coins && npm run destroy-coins",
+        "clean-all-assets": "npm run force-destroy-assets && npm run unpin-all-assets"
     },
     "dependencies": {
         "@jackcom/reachduck": "^0.4.5",
@@ -15,9 +30,6 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.18.9",
         "@babel/plugin-syntax-import-assertions": "^7.18.6",
-        "chai": "^4.3.6",
-        "chai-as-promised": "^7.1.1",
-        "mocha": "^10.0.0",
         "@types/node": "^18.7.13",
         "@typescript-eslint/eslint-plugin": "^5.35.1",
         "@typescript-eslint/parser": "^5.35.1",
@@ -28,8 +40,6 @@
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-json": "^3.1.0",
         "prettier": "2.7.1",
-        "react-app-rewired": "^2.2.1",
-        "source-map-explorer": "^2.5.2",
         "typescript": "^4.8.2"
     }
 }

@@ -1,11 +1,11 @@
-import fs from "fs";
+import * as fs from "fs";
 import { CIDString } from "nft.storage";
-import { makeRateLimiter, pinNFT, writeToJson } from "./utils";
-
-const NFT_PATH_PREFIX = "../nfts";
+import { Cids } from "./types";
+import { NFT_PATH_PREFIX, pinNFT, readFromJson, writeToJson } from "./utils";
 
 // pins every asset inside /nfts folder to ipfs
 (async () => {
+    // read all nft image paths into array
     const imagePaths = fs
         .readdirSync(NFT_PATH_PREFIX)
         .filter((fn) => fn !== ".DS_Store") // sometimes shows up so filter this file
@@ -14,14 +14,12 @@ const NFT_PATH_PREFIX = "../nfts";
     const cids: { cid: CIDString; idx: number }[] = [];
     let retryIdxs: number[] = [];
 
-    // rate limit pinning to 30 rps to avoid throttling
-    const rateLimitedPinNFT = makeRateLimiter(30).wrap(pinNFT);
     // attempt to pin all assets
     await Promise.all(
         imagePaths.map(async (path, idx) => {
             try {
                 // pin to ipfs
-                const cid = await rateLimitedPinNFT(`${NFT_PATH_PREFIX}/${path}`);
+                const cid = await pinNFT(`${NFT_PATH_PREFIX}/${path}`);
                 // add to cids
                 cids.push({ cid, idx });
             } catch (e) {
@@ -40,7 +38,7 @@ const NFT_PATH_PREFIX = "../nfts";
             retryIdxs.map(async (retryIdx) => {
                 try {
                     // pin to ipfs
-                    const cid = await rateLimitedPinNFT(`${NFT_PATH_PREFIX}/${imagePaths[retryIdx]}`);
+                    const cid = await pinNFT(`${NFT_PATH_PREFIX}/${imagePaths[retryIdx]}`);
                     // add to cids
                     cids.push({ cid, idx: retryIdx });
                     // remove from retryIdxs
@@ -55,5 +53,10 @@ const NFT_PATH_PREFIX = "../nfts";
     } while (retryIdxs.length !== 0);
 
     console.log(`${cids.length} nfts pinned successfully`);
-    writeToJson("cids", cids);
+
+    // update cids json
+    const { coin: coinCids } = readFromJson<Cids>("cids");
+    writeToJson({ potr: cids, coin: coinCids }, "cids");
+
+    console.log(`nft cids written successfully to json`);
 })();

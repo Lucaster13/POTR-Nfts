@@ -1,19 +1,28 @@
 import { ReachAccount } from "@jackcom/reachduck";
 import { CIDString } from "nft.storage";
-import { Arc69Metadata, AsaId, PotrTraits } from "../types";
+import { Arc69Metadata, AsaId, CoinType } from "../types";
 import { POTR_URL } from "./constants";
 import mintAsa, { MintAsaParams } from "./mintAsa.js";
 
-export default async (adminAcc: ReachAccount, id: number, cid: CIDString, traits: PotrTraits) => {
+// params for coin asa's
+const coinInfo: Record<CoinType, [string, string, number]> = {
+    bronze: ["Bronze Coin", "POTRBC", 1000],
+    silver: ["Silver Coin", "POTRSC", 500],
+    gold: ["Gold Coin", "POTRGC", 100],
+};
+
+export default async (adminAcc: ReachAccount, coinType: CoinType, cid: CIDString) => {
     try {
-        // create traits metadata object
-        const idString = String(id).padStart(4, "0");
+        // get coin info based on type
+        const [name, sym, supply] = coinInfo[coinType];
+
+        // create metadata
         const metadata: Arc69Metadata = {
             standard: "arc69",
-            description: `Protector of the Rand #${idString}`,
+            description: `Protectors of the Rand - ${name}`,
             external_url: POTR_URL,
             mime_type: "image/png",
-            properties: traits,
+            properties: {},
         };
 
         // encode the metadata for asset note
@@ -22,16 +31,16 @@ export default async (adminAcc: ReachAccount, id: number, cid: CIDString, traits
         // create params to mint asset
         const mintParams: MintAsaParams = {
             acc: adminAcc,
-            supply: 1,
-            sym: `POTR${idString}`,
-            name: `Protector ${idString}`,
+            supply,
+            sym,
+            name,
             url: `ipfs://${cid}`,
             note: encodedNote,
         };
 
-        // mint potr
+        // mint coin
         const asaId: AsaId = await mintAsa(mintParams);
-        console.log(`Mint Success - POTR${idString}`);
+        console.log(`Mint Success - ${name}`);
 
         // return asa id and cid
         return { asaId, cid };

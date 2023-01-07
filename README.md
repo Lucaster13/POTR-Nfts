@@ -3,7 +3,7 @@
 ## Setup
 
 1. Go to `/src/utils/.sectrets.ts` and add mnemonic and nft storage key
-2. Check if there are ids inside of `/src/output/asaIds.json`, if so run
+2. Check if there are ids inside of `/src/data/asaIds.json`, if so run
 
     ```
     npm run clean-nfts
@@ -15,19 +15,18 @@
     ```
     npm run mint-coins
     ```
-2. Open `/src/index.ipnyb` and run all cells
-    - This will create all of the nfts inside `/nfts`
-    - Populate `/src/output/metadata.json` and `/src/output/traitStats.json`
+2. Open `/src/image-generation/index.ipnyb` and run all cells
+    - This will create all of the nfts inside `/src/image-generation/nfts`
+    - Populate `/src/data/metadata.json` and `/src/data/traitTrueRarities.json`
 3. Mint and pin all of the nfts by running
-
     ```
     npm run mint-nfts
     ```
 
 ### More Info
 
-`/src/output/traitStats.json` - the number of each trait that was produced during the 1st step in `Execution`
+`/src/data/traitTrueRarities.json` - the count and true rarity of each trait that was produced during the 2nd step in `Execution`
 
-`/src/output/metadata.json` - the traits for all of the nfts created in the 1st step of `Execution`
+`/src/data/metadata.json` - the traits for all of the nfts created in the 1st step of `Execution`
 
-`/src/input/traitWeights.json` - all of the traits and their respective rarities
+`/src/data/traitWeights.json` - all of the traits and their respective rarities

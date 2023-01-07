@@ -1,8 +1,10 @@
 import { createReachAPI, ReachAccount } from "@jackcom/reachduck";
 import { AsaId } from "../types/assets";
-import { ALGOSDK_PARAMS } from "./algo";
+import { makeRateLimiter } from "./common";
+import { ALGOSDK_PARAMS } from "./constants";
 
-export default async function deleteAsa(acc: ReachAccount, asaId: AsaId) {
+// wrap with rate limit 60 tps and 60 threads
+export default makeRateLimiter(60, 60).wrap(async function deleteAsa(acc: ReachAccount, asaId: AsaId) {
     try {
         // Destroy an Asset:
         // All of the created assets should now be back in the creators
@@ -39,4 +41,4 @@ export default async function deleteAsa(acc: ReachAccount, asaId: AsaId) {
     } catch (e) {
         throw new Error(e);
     }
-}
+})

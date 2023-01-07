@@ -12,6 +12,9 @@ import path from "path";
 
 import { NFT_STORAGE_API_KEY } from "./.secrets.js";
 
+// create nft storage
+const nftStorage = new NFTStorage({ token: NFT_STORAGE_API_KEY });
+
 /**
  * A helper to read a file from a location on disk and return a File object.
  * Note that this reads the entire file into memory and should not be used for
@@ -26,19 +29,35 @@ async function fileFromPath(filePath: string) {
 /**
  * Reads an image file from `imagePath` and stores an NFT
  */
-export async function pinNFT(imagePath: string) {
+const pinNFT = async (imagePath: string) => {
     // load the file from disk
-    const image = await fileFromPath(imagePath);
+    const img = await fileFromPath(imagePath);
 
-    // create a new NFTStorage client using API key
-    const nftStorage = new NFTStorage({ token: NFT_STORAGE_API_KEY });
-    const cid = await nftStorage.storeBlob(image);
-    console.log("Pin NFT Success", imagePath);
-    return cid;
-}
+    // rate limit pin and return cid
+    return nftStorage
+        .rateLimiter()
+        .then(() => console.log("trying to pin", imagePath))
+        .then(() => nftStorage.storeBlob(img))
+        .then((cid) => {
+            console.log("Pin NFT Success", imagePath);
+            return cid;
+        })
+        .catch((e) => console.error(e));
+};
 
-export async function unpinNFT(cid: CIDString) {
-    // create a new NFTStorage client using API key
-    const nftStorage = new NFTStorage({ token: NFT_STORAGE_API_KEY });
-    await nftStorage.delete(cid);
-}
+// create a new NFTStorage client using API key
+const unpinNFT = async (cid: CIDString) => {
+    await new Promise(() => console.log("trying to unpin", cid))
+        .then(() => nftStorage.check(cid))
+        .catch(() => {
+            throw new Error(`cid does not exist ${cid}`);
+        });
+
+    return nftStorage
+        .rateLimiter()
+        .then(() => nftStorage.delete(cid))
+        .then(() => console.log("UnPin NFT Success", cid))
+        .catch((e) => console.error(e));
+};
+
+export { pinNFT, unpinNFT };
