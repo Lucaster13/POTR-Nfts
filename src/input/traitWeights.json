@@ -29,7 +29,7 @@
         50]
     },
     "Class": {
-        "traits": ["Berserker", "Ranger", "Wizard", "Crusader", "Necromancer", "Assassin", "Phantom", "Archangel", "Dragon", "Golem"],
+        "traits": ["Berserker", "Ranger", "Wizard", "Crusader", "Necromancer", "Assassin", "Phantom", "Archangel", "Golem", "Dragon"],
         "weights": [1200, 900, 700, 600, 600, 600, 500, 400, 300, 200]
     },
     "Body": {
