@@ -1,4 +1,3 @@
-import assert from "assert";
 import { CIDString } from "nft.storage";
 import { AsaId } from "../types";
 

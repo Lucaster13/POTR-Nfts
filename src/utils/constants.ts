@@ -12,6 +12,8 @@ const NFT_PATH_PREFIX = "/Users/lucasterr/Documents/_code/Protectors-Of-The-Rand
 const COIN_PATH_PREFIX = "/Users/lucasterr/Documents/_code/Protectors-Of-The-Rand/POTR-Nfts/src/image-generation/coins";
 const DATA_PATH_PREFIX = "/Users/lucasterr/Documents/_code/Protectors-Of-The-Rand/POTR-Nfts/src/data";
 
+const IPFS_PATH_PREFIX = "ipfs://";
+
 /* 
 
     RARE TRAITS
@@ -52,4 +54,4 @@ const server = `https://${REACH_NETWORK.toLowerCase()}-api.algonode.cloud`;
 const port = 443;
 const ALGOSDK_PARAMS = [token, server, port];
 
-export { COIN_TYPES, COIN_PATH_PREFIX, NFT_PATH_PREFIX, DATA_PATH_PREFIX, POTR_URL, REACH_PROVIDER_ENV, REACH_NETWORK, ALGOSDK_PARAMS };
+export { COIN_TYPES, COIN_PATH_PREFIX, NFT_PATH_PREFIX, DATA_PATH_PREFIX, POTR_URL, REACH_PROVIDER_ENV, REACH_NETWORK, ALGOSDK_PARAMS, IPFS_PATH_PREFIX };

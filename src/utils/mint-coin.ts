@@ -1,8 +1,8 @@
 import { ReachAccount } from "@jackcom/reachduck";
-import { CIDString } from "nft.storage";
 import { Arc69Metadata, AsaId, CoinType } from "../types";
 import { POTR_URL } from "./constants";
-import mintAsa, { MintAsaParams } from "./mintAsa.js";
+import { getCoinIpfsUrl } from "./ipfs";
+import mintAsa, { MintAsaParams } from "./mint-asa.js";
 
 // params for coin asa's
 const coinInfo: Record<CoinType, [string, string, number]> = {
@@ -11,7 +11,7 @@ const coinInfo: Record<CoinType, [string, string, number]> = {
     gold: ["Gold Coin", "POTRGC", 100],
 };
 
-export default async (adminAcc: ReachAccount, coinType: CoinType, cid: CIDString) => {
+export default async (adminAcc: ReachAccount, coinType: CoinType): Promise<AsaId> => {
     try {
         // get coin info based on type
         const [name, sym, supply] = coinInfo[coinType];
@@ -34,7 +34,7 @@ export default async (adminAcc: ReachAccount, coinType: CoinType, cid: CIDString
             supply,
             sym,
             name,
-            url: `ipfs://${cid}`,
+            url: getCoinIpfsUrl(coinType),
             note: encodedNote,
         };
 
@@ -42,8 +42,7 @@ export default async (adminAcc: ReachAccount, coinType: CoinType, cid: CIDString
         const asaId: AsaId = await mintAsa(mintParams);
         console.log(`Mint Success - ${name}`);
 
-        // return asa id and cid
-        return { asaId, cid };
+        return asaId;
     } catch (e) {
         throw new Error(e.message);
     }

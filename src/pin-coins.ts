@@ -1,26 +1,14 @@
-import { CIDString } from "nft.storage";
-import { Cids, CoinType } from "./types";
-import { COIN_PATH_PREFIX, COIN_TYPES, pinNFT, readFromJson, writeToJson } from "./utils";
+import { getCids, getNftStorage, setCid } from "./utils";
+import { coinFilesObj } from "./utils/files";
 
-// pins every asset inside /nfts folder to ipfs
+// pins every asset inside /coins folder to ipfs
 (async () => {
-    const cids: { cid: CIDString; idx: CoinType }[] = [];
-
-    // attempt to pin all assets
-    await Promise.all(
-        COIN_TYPES.map(async (coinType) => {
-            // pin to ipfs
-            const cid = await pinNFT(`${COIN_PATH_PREFIX}/${coinType}_coin.png`);
-            // add to cids
-            cids.push({ cid, idx: coinType });
-        })
-    );
-
-    console.log(`coins pinned successfully`);
-
-    // update cids json
-    const { potr: potrCids } = readFromJson<Cids>("cids");
-    writeToJson({ potr: potrCids, coin: cids }, "cids");
-
-    console.log(`coin cids written successfully to json`);
+    const nftStorage = getNftStorage();
+    return nftStorage
+        .rateLimiter()
+        .then(() => console.log(`pinning file(s) from /coins`))
+        .then(() => nftStorage.storeDirectory(coinFilesObj))
+        .then((cid) => setCid({ coin: cid }))
+        .then(() => console.log("Successfully pinned directory", getCids().coin))
+        .catch((e) => console.error(e.message));
 })();

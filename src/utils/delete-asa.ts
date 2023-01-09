@@ -3,8 +3,8 @@ import { AsaId } from "../types/assets";
 import { makeRateLimiter } from "./common";
 import { ALGOSDK_PARAMS } from "./constants";
 
-// wrap with rate limit 60 tps and 60 threads
-export default makeRateLimiter(60, 60).wrap(async function deleteAsa(acc: ReachAccount, asaId: AsaId) {
+// wrap with rate limit
+export default makeRateLimiter(60, 60).wrap(async (acc: ReachAccount, asaId: AsaId) => {
     try {
         // Destroy an Asset:
         // All of the created assets should now be back in the creators
@@ -23,7 +23,7 @@ export default makeRateLimiter(60, 60).wrap(async function deleteAsa(acc: ReachA
         const params = await algodClient.getTransactionParams().do();
 
         // The address for the from field must be the manager account
-        // Which is currently the creator addr1
+        // Which is currently the creator addr
         const { addr, sk } = acc.networkAccount;
         const note = undefined;
 
@@ -41,4 +41,4 @@ export default makeRateLimiter(60, 60).wrap(async function deleteAsa(acc: ReachA
     } catch (e) {
         throw new Error(e);
     }
-})
+});

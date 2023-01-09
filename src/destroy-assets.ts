@@ -18,31 +18,30 @@ loadReachWithOpts(loadStdlib, {
     const reach = createReachAPI();
     const admin = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
     const connector = createConnectorAPI();
-    // loop until there are no assets retrieved from the request
-    let assetsDeleted = 0;
-    while (true) {
-        // attempt to load 2000 assets
-        const { assets } = await connector.loadAssets(admin.networkAccount.addr, 2000);
 
-        if (!assets.length) break;
+    while (true) {
+        console.log("Loading assets...");
+
+        const { assets } = await connector.loadAssets(admin.networkAccount.addr, 200);
+
+        const validAssets = assets.filter((a: any) => a !== null);
+
+        if (!validAssets.length) {
+            console.log("No Potrs to destroy");
+            break;
+        }
 
         // attempt to delete assets
-        const deleteResponses = await Promise.all(
-            assets
-                .filter((a: any) => a !== null)
-                .map(async ({ id }) => {
-                    try {
-                        await deleteAsa(admin, id);
-                        return true;
-                    } catch (e) {
-                        console.error(`failed to delete ${id} ${e.message}`);
-                    }
-                })
+        let assetsDeleted = 0;
+
+        await Promise.all(
+            validAssets.map(({ id }) =>
+                deleteAsa(admin, id)
+                    .then(() => assetsDeleted++)
+                    .catch((e) => console.error(`Encountered Error: ${e.message}, Skipping...`))
+            )
         );
 
-        // add to successfully deleted asset count
-        deleteResponses.filter((res) => res).forEach(() => assetsDeleted++);
+        console.log(`\n\nDestroyed ${assetsDeleted} assets successfully\n\n`);
     }
-
-    console.log(`Deleted ${assetsDeleted} assets successfully`);
 })();

@@ -6,7 +6,7 @@ from functools import reduce
 from math import log
 
 # trait data consists of two arrays: [trait_names, trait_rarity_percentage]
-TRAIT_WEIGHTS = read_json_file("traitWeights")
+TRAIT_WEIGHTS = read_json_file("trait-weights")
 
 def check_humanoid(class_name: str): return class_name not in ["Dragon", "Golem", "Phantom"]
 
@@ -120,7 +120,7 @@ def calc_power_contribution(traits, trait_type, base_power_weight, trait_true_ra
 
 # loop over metadata and add powers
 def add_powers_to_metadata(md: list):
-    ttr = read_json_file("traitTrueRarities")
+    ttr = read_json_file("trait-true-rarities")
     for metadata in md:
         # retrieve the power for these traits
         base_class = get_base_class(metadata["Class"]);
@@ -195,7 +195,7 @@ def generate_potr_metadata(n: int):
     
     # write traits and rarities to json 
     write_json_file(metadata, "metadata")
-    write_json_file(trait_true_rarities, "traitTrueRarities")
+    write_json_file(trait_true_rarities, "trait-true-rarities")
     
     # checks to see if everything worked properly
     filenames = [generate_file_name_from_traits(traits) for traits in metadata]

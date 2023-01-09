@@ -1,10 +1,10 @@
 export * from "./.secrets";
 export * from "./common";
 export { default as deleteAsa } from "./deleteAsa";
-export { default as deletePotr } from "./deletePotr";
 export * from "./ipfs";
 export * from "./constants";
-export { default as mintAsa } from "./mintAsa";
-export { default as mintPotr } from "./mintPotr";
+export { default as mintAsa } from "./mint-asa";
+export { default as mintPotr } from "./mint-potr";
 export * from "./json";
 export * from "./type-guards";
+export * from "./data";

@@ -1,8 +1,6 @@
 import { createReachAPI, loadReachWithOpts } from "@jackcom/reachduck";
 import { loadStdlib } from "@reach-sh/stdlib";
-import { AsaIds } from "./types";
-
-import { deleteAsa, isAsaIdArray, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, readFromJson, writeToJson } from "./utils";
+import { deleteAsa, getAsaIds, isAsaIdArray, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, setAsaIds } from "./utils";
 
 // load reach
 loadReachWithOpts(loadStdlib, {
@@ -21,35 +19,23 @@ loadReachWithOpts(loadStdlib, {
     const reach = createReachAPI();
     const admin = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
 
+    // read potr asa ids
+    const potrAsaIds = getAsaIds().potr;
+
+    // if no ids, return
+    if (!isAsaIdArray(potrAsaIds) || !potrAsaIds.length) throw new Error("No Potrs to destroy");
+
     let potrsDeleted = 0;
 
-    while (true) {
-        // read potr asa ids
-        const { potr: potrAsaIds, coin: coinAsaIds } = readFromJson<AsaIds>("asaIds");
+    // attempt to delete assets
+    await Promise.all(
+        potrAsaIds.map((asaId) =>
+            deleteAsa(admin, asaId)
+                .then(() => setAsaIds({ potr: getAsaIds().potr.filter((id) => id !== asaId) }))
+                .then(() => potrsDeleted++)
+                .catch((e) => console.error(e.message))
+        )
+    );
 
-        // if no ids, stop loop
-        if (!isAsaIdArray(potrAsaIds) || !potrAsaIds.length) break;
-
-        // attempt to delete assets
-        const deletedIds = await Promise.all(
-            potrAsaIds.map(async (id) => {
-                try {
-                    await deleteAsa(admin, id);
-                    return id;
-                } catch (e) {
-                    console.error(`failed to delete ${id} ${e.message}`);
-                }
-            })
-        );
-
-        // add to successfully deleted asset count
-        const successfullyDeletedIds = deletedIds.filter((id) => id);
-        successfullyDeletedIds.forEach(() => potrsDeleted++);
-
-        // remove potrs and update asaIds json
-        const updatedPotrAsaIds = potrAsaIds.filter((id) => !successfullyDeletedIds.includes(id));
-        writeToJson({ potr: updatedPotrAsaIds, coin: coinAsaIds }, "asaIds");
-    }
-
-    console.log(`Deleted ${potrsDeleted} potrs successfully`);
+    console.log("finished deleting assets total:", potrsDeleted);
 })();

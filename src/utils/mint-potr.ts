@@ -1,10 +1,10 @@
 import { ReachAccount } from "@jackcom/reachduck";
-import { CIDString } from "nft.storage";
 import { Arc69Metadata, AsaId, PotrTraits } from "../types";
 import { POTR_URL } from "./constants";
-import mintAsa, { MintAsaParams } from "./mintAsa.js";
+import { getPotrIpfsUrl } from "./ipfs";
+import mintAsa, { MintAsaParams } from "./mint-asa.js";
 
-export default async (adminAcc: ReachAccount, id: number, cid: CIDString, traits: PotrTraits) => {
+export default async (adminAcc: ReachAccount, id: number, traits: PotrTraits, potrFileName: string) => {
     try {
         // create traits metadata object
         const idString = String(id).padStart(4, "0");
@@ -25,7 +25,7 @@ export default async (adminAcc: ReachAccount, id: number, cid: CIDString, traits
             supply: 1,
             sym: `POTR${idString}`,
             name: `Protector ${idString}`,
-            url: `ipfs://${cid}`,
+            url: getPotrIpfsUrl(potrFileName),
             note: encodedNote,
         };
 
@@ -34,7 +34,7 @@ export default async (adminAcc: ReachAccount, id: number, cid: CIDString, traits
         console.log(`Mint Success - POTR${idString}`);
 
         // return asa id and cid
-        return { asaId, cid };
+        return asaId;
     } catch (e) {
         throw new Error(e.message);
     }

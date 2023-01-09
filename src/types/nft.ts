@@ -1,5 +1,3 @@
-import { AsaId } from "./assets";
-
 type TraitValue = string | number;
 type TraitType = "Background" | "Class" | "Body" | "Head" | "Eyes" | "Mouth" | "Back" | "Power";
 type BaseClassType = "Humanoid" | "Phantom" | "Golem" | "Dragon";
@@ -13,15 +11,15 @@ interface PotrTraits {
     Eyes: string;
     Mouth: string;
     Back: string;
-    Power: number
+    Power: number;
 }
 
 interface Arc69Metadata {
-    standard: "arc69",
-    description: string,
-    external_url: string,
-    mime_type: "image/png",
-    properties: PotrTraits | {},
+    standard: "arc69";
+    description: string;
+    external_url: string;
+    mime_type: "image/png";
+    properties: PotrTraits | {};
 }
 
 export { PotrTraits, Arc69Metadata, TraitType, TraitValue, BaseClassType, ClassType };

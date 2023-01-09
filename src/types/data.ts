@@ -1,9 +1,9 @@
 import { CIDString } from "nft.storage";
-import { AsaId, CoinType } from "./assets";
+import { AsaId } from "./assets";
 
 interface Cids {
-    potr: [{ cid: CIDString; idx: number }];
-    coin: [{ cid: CIDString; idx: CoinType }];
+    potr: CIDString;
+    coin: CIDString;
 }
 
 interface AsaIds {
