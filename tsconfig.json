@@ -4,7 +4,9 @@
         "target": "ES2022",
         "moduleResolution": "Node",
         "esModuleInterop": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "outDir": "/dist",
+        "noEmit": true
     },
     "compileOnSave": true
 }

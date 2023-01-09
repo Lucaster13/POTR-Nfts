@@ -1,5 +1,5 @@
 import { createReachAPI, ReachAccount } from "@jackcom/reachduck";
-import { AsaId } from "../types";
+import { AsaId } from "potr-utils/types";
 import { makeRateLimiter } from "./common";
 import { ALGOSDK_PARAMS } from "./constants";
 

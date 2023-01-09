@@ -2,21 +2,23 @@
     "type": "module",
     "scripts": {
         "exec-typescript": "ts-node-esm --experimental-specifier-resolution=node $cmd",
-        "pin-potrs": "npm run exec-typescript ./src/pin-potrs.ts",
-        "pin-coins": "npm run exec-typescript ./src/pin-coins.ts",
+        "pin-potrs": "npm run exec-typescript /src/pin-potrs.ts",
+        "pin-coins": "npm run exec-typescript /src/pin-coins.ts",
         "pin-all-assets": "npm run pin-coins && npm run pin-potrs",
-        "unpin-potrs": "npm run exec-typescript ./src/unpin-potrs.ts",
-        "unpin-coins": "npm run exec-typescript ./src/unpin-coins.ts",
+        "unpin-potrs": "npm run exec-typescript /src/unpin-potrs.ts",
+        "unpin-coins": "npm run exec-typescript /src/unpin-coins.ts",
         "unpin-all-assets": "npm run unpin-coins && npm run unpin-potrs",
-        "mint-potrs": "npm run exec-typescript ./src/mint-potrs.ts",
-        "mint-coins": "npm run exec-typescript ./src/mint-coins.ts",
+        "mint-potrs": "npm run exec-typescript /src/mint-potrs.ts",
+        "mint-coins": "npm run exec-typescript /src/mint-coins.ts",
         "mint-all-assets": "npm run mint-coins && npm run mint-potrs",
-        "destroy-potrs": "npm run exec-typescript ./src/destroy-potrs.ts",
-        "destroy-coins": "npm run exec-typescript ./src/destroy-coins.ts",
-        "force-destroy-assets": "npm run exec-typescript ./src/destroy-assets.ts",
+        "destroy-potrs": "npm run exec-typescript /src/destroy-potrs.ts",
+        "destroy-coins": "npm run exec-typescript /src/destroy-coins.ts",
+        "force-destroy-assets": "npm run exec-typescript /src/destroy-assets.ts",
         "clean-potrs": "npm run unpin-potrs && npm run destoy-potrs",
         "clean-coins": "npm run unpin-coins && npm run destroy-coins",
-        "clean-all-assets": "npm run force-destroy-assets && npm run unpin-all-assets"
+        "clean-all-assets": "npm run force-destroy-assets && npm run unpin-all-assets",
+        "clean-build": "rm -rf node_modules dist",
+        "build": "tsc"
     },
     "dependencies": {
         "@jackcom/reachduck": "^0.4.5",
@@ -27,7 +29,8 @@
         "multiformats": "^9.7.1",
         "nft.storage": "^7.0.0",
         "node-fetch": "^3.3.0",
-        "url-parse": "^1.5.10"
+        "url-parse": "^1.5.10",
+        "potr-utils": "github:Lucaster13/POTR-Utils"
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.18.9",

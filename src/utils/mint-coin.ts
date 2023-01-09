@@ -1,5 +1,5 @@
 import { ReachAccount } from "@jackcom/reachduck";
-import { Arc69Metadata, AsaId, CoinType } from "../types";
+import { Arc69Metadata, AsaId, CoinType } from "potr-utils/types";
 import { POTR_URL } from "./constants";
 import { getCoinIpfsUrl } from "./ipfs";
 import mintAsa, { MintAsaParams } from "./mint-asa.js";

@@ -1,4 +1,4 @@
-import { AsaIds, Cids, PotrTraits } from "../types";
+import { AsaIds, Cids, PotrTraits } from "potr-utils/types";
 import { readFromJson, writeToJson } from "./json";
 
 const getCids = () => readFromJson<Cids>("cids");

@@ -1,4 +1,4 @@
-import { CoinType } from "../types";
+import { CoinType } from "potr-utils/types";
 
 const POTR_URL = "protectorsoftherand.com";
 const COIN_TYPES: CoinType[] = ["bronze", "silver", "gold"];

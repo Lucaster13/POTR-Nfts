@@ -1,6 +1,6 @@
 export * from "./.secrets";
 export * from "./common";
-export { default as deleteAsa } from "./deleteAsa";
+export { default as deleteAsa } from "./delete-asa";
 export * from "./ipfs";
 export * from "./constants";
 export { default as mintAsa } from "./mint-asa";

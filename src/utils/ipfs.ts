@@ -3,7 +3,7 @@ import { NFTStorage } from "nft.storage";
 import { NFT_STORAGE_API_KEY } from "./.secrets.js";
 import { IPFS_PATH_PREFIX } from "./constants.js";
 import { getCids } from "./data.js";
-import { CoinType } from "../types/assets.js";
+import { CoinType } from "potr-utils/types";
 
 // create nft storage
 const getNftStorage = () => new NFTStorage({ token: NFT_STORAGE_API_KEY });

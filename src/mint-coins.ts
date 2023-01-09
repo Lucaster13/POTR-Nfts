@@ -1,7 +1,7 @@
 import { createReachAPI, loadReachWithOpts, ReachAccount } from "@jackcom/reachduck";
 import { loadStdlib } from "@reach-sh/stdlib";
 import { COIN_TYPES, getAsaIds, getCids, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, setAsaIds } from "./utils";
-import mintCoin from "./utils/mintCoin";
+import mintCoin from "./utils/mint-coin";
 
 // load reach
 loadReachWithOpts(loadStdlib, {
