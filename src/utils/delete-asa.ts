@@ -1,7 +1,7 @@
-import { createReachAPI, ReachAccount } from "@jackcom/reachduck";
-import { AsaId } from "potr-utils/types";
+import { AsaId, ReachAccount } from "potr-types";
 import { makeRateLimiter } from "./common";
-import { ALGOSDK_PARAMS } from "./constants";
+import { ALGOSDK_PARAMS } from "../constants";
+import { createReachApi } from "./stdlib";
 
 // wrap with rate limit
 export default makeRateLimiter(60, 60).wrap(async (acc: ReachAccount, asaId: AsaId) => {
@@ -15,9 +15,9 @@ export default makeRateLimiter(60, 60).wrap(async (acc: ReachAccount, asaId: Asa
         // We will account for changing transaction parameters
         // before every transaction in this example
         console.log(`Deleting ${asaId}...`);
-        const reach = createReachAPI();
+        const reach = createReachApi();
 
-        const { algosdk } = reach;
+        const { algosdk } = reach as any;
         const algodClient = new algosdk.Algodv2(...ALGOSDK_PARAMS);
 
         const params = await algodClient.getTransactionParams().do();

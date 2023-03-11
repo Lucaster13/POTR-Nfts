@@ -1,21 +1,9 @@
-import { createReachAPI, loadReachWithOpts, ReachAccount } from "@jackcom/reachduck";
-import { loadStdlib } from "@reach-sh/stdlib";
-
-import { getAsaIds, getMetadata, mintPotr, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, setAsaIds } from "./utils";
+import { getAdminAcc, getAsaIds, getMetadata, mintPotr, setAsaIds } from "./utils";
 import { getPotrFilesArr } from "./utils/files";
-
-// load reach
-loadReachWithOpts(loadStdlib, {
-    chain: "ALGO",
-    network: REACH_NETWORK,
-    providerEnv: REACH_PROVIDER_ENV,
-});
 
 // MINTS ALL ASSETS IN CIDS OBJECT
 (async () => {
-    // get acc
-    const reach = createReachAPI();
-    const admin: ReachAccount = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
+    const admin = await getAdminAcc();
 
     const potrMetadata = getMetadata();
     const potrFiles = await getPotrFilesArr();
@@ -24,7 +12,7 @@ loadReachWithOpts(loadStdlib, {
 
     const retries = await Promise.all(
         potrFiles.map(({ name }, idx) =>
-            mintPotr(admin, idx + 1, potrMetadata[idx], name) // only add asaId if it does not exist
+            mintPotr(admin, idx + 1, potrMetadata[idx]) // only add asaId if it does not exist
                 .then((asaId) => !getAsaIds().potr.includes(asaId) && setAsaIds({ potr: [...getAsaIds().potr, asaId] }))
                 .then(() => {
                     console.log("Successfully updated potr asa ids, num ids:", getAsaIds().potr.length);

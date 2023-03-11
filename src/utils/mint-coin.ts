@@ -1,6 +1,5 @@
-import { ReachAccount } from "@jackcom/reachduck";
-import { Arc69Metadata, AsaId, CoinType } from "potr-utils/types";
-import { POTR_URL } from "./constants";
+import { Arc69Metadata, AsaId, CoinType, ReachAccount } from "potr-types";
+import { POTR_URL } from "../constants";
 import { getCoinIpfsUrl } from "./ipfs";
 import mintAsa, { MintAsaParams } from "./mint-asa.js";
 
@@ -11,7 +10,7 @@ const coinInfo: Record<CoinType, [string, string, number]> = {
     gold: ["Gold Coin", "POTRGC", 100],
 };
 
-export default async (adminAcc: ReachAccount, coinType: CoinType): Promise<AsaId> => {
+export default async (acc: ReachAccount, coinType: CoinType): Promise<AsaId> => {
     try {
         // get coin info based on type
         const [name, sym, supply] = coinInfo[coinType];
@@ -30,7 +29,7 @@ export default async (adminAcc: ReachAccount, coinType: CoinType): Promise<AsaId
 
         // create params to mint asset
         const mintParams: MintAsaParams = {
-            acc: adminAcc,
+            acc,
             supply,
             sym,
             name,

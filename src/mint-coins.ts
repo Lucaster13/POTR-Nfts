@@ -1,20 +1,10 @@
-import { createReachAPI, loadReachWithOpts, ReachAccount } from "@jackcom/reachduck";
-import { loadStdlib } from "@reach-sh/stdlib";
-import { COIN_TYPES, getAsaIds, getCids, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV, setAsaIds } from "./utils";
+import { CoinType } from "potr-types";
+import { COIN_TYPES } from "./constants";
+import { getAdminAcc, getAsaIds, getCids, setAsaIds } from "./utils";
 import mintCoin from "./utils/mint-coin";
 
-// load reach
-loadReachWithOpts(loadStdlib, {
-    chain: "ALGO",
-    network: REACH_NETWORK,
-    providerEnv: REACH_PROVIDER_ENV,
-});
-
 (async () => {
-    // get reach handle
-    const reach = createReachAPI();
-    // sign into admin account
-    const admin: ReachAccount = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
+    const admin = await getAdminAcc();
 
     if (!getCids().coin.length) {
         console.log("No cids for coins to mint with");
@@ -22,7 +12,7 @@ loadReachWithOpts(loadStdlib, {
     }
 
     // for each coin cid, mint the coin
-    await Promise.all(COIN_TYPES.map((coinType) => mintCoin(admin, coinType)))
+    await Promise.all(COIN_TYPES.map((coinType) => mintCoin(admin, coinType as CoinType)))
         .then((asaIds) => setAsaIds({ coin: asaIds }))
         .then(() => console.log("Success minting coins", getAsaIds().coin));
 })();

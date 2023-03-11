@@ -1,12 +1,18 @@
 {
     "compilerOptions": {
         "module": "ESNext",
-        "target": "ES2022",
+        "target": "ESNext",
         "moduleResolution": "Node",
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "outDir": "/dist",
         "noEmit": true
     },
-    "compileOnSave": true
+    "ts-node": {
+        "esm": true,
+        "experimentalSpecifierResolution": "node"
+    },
+    "compileOnSave": true,
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"]
 }

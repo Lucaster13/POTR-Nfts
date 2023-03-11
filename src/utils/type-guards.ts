@@ -1,5 +1,5 @@
 import { CIDString } from "nft.storage";
-import { AsaId } from "potr-utils/types";
+import { AsaId } from "potr-types";
 
 const isAsaId = (id: any): id is AsaId => Number.isInteger(id);
 const isAsaIdArray = (arr: any): arr is AsaId[] => {

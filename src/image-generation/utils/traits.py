@@ -127,7 +127,6 @@ def add_powers_to_metadata(md: list):
         is_humanoid = check_humanoid(base_class)
         is_phantom = check_phantom(base_class)
         is_special = not is_humanoid and not is_phantom
-        is_golem = base_class == "Golem"
         
         # # Create weights for each trait that are multipliers to its power
         # # each trait has separate scaling factors based on the class to balance power levels
@@ -149,6 +148,10 @@ def add_powers_to_metadata(md: list):
     
         # add power to traits and add it to list of metadata
         metadata["Power"] = power
+        
+        # add level to traits
+        metadata["Level"] = 1
+        
         
     # sort by descending power
     md.sort(reverse=True, key=(lambda traits: traits["Power"]))

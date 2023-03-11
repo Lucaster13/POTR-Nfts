@@ -1,13 +1,6 @@
-import { createConnectorAPI, createReachAPI, loadReachWithOpts } from "@jackcom/reachduck";
-import { loadStdlib } from "@reach-sh/stdlib";
-import { deleteAsa, RAND_KINGDOM_MNEMONIC, REACH_NETWORK, REACH_PROVIDER_ENV } from "./utils";
-
-// load reach
-loadReachWithOpts(loadStdlib, {
-    chain: "ALGO",
-    network: REACH_NETWORK,
-    providerEnv: REACH_PROVIDER_ENV,
-});
+import axios from "axios";
+import { ALGO_INDEXER_SERVER } from "./constants";
+import { createReachApi, deleteAsa, getAdminAcc } from "./utils";
 
 /*
     DELETE ALL ASSETS
@@ -15,27 +8,28 @@ loadReachWithOpts(loadStdlib, {
     NOTE: Only use this as the potr admin, it will delete all of the assets within your account that you have created
 */
 (async () => {
-    const reach = createReachAPI();
-    const admin = await reach.newAccountFromMnemonic(RAND_KINGDOM_MNEMONIC);
-    const connector = createConnectorAPI();
+    const reach = createReachApi();
+    const admin = await getAdminAcc();
+
+    const assetUrl = `${ALGO_INDEXER_SERVER}/v2/accounts/${reach.formatAddress(admin)}/assets`;
 
     while (true) {
         console.log("Loading assets...");
 
-        const { assets } = await connector.loadAssets(admin.networkAccount.addr, 200);
+        const { data } = await axios.get(assetUrl);
 
-        const validAssets = assets.filter((a: any) => a !== null);
-
-        if (!validAssets.length) {
-            console.log("No Potrs to destroy");
+        if (!data.assets.length) {
+            console.log("No more assets to destroy");
             break;
+        } else {
+            console.log(data.assets.length, "assets found");
         }
 
         // attempt to delete assets
         let assetsDeleted = 0;
 
         await Promise.all(
-            validAssets.map(({ id }) =>
+            data.assets.map(({ "asset-id": id }) =>
                 deleteAsa(admin, id)
                     .then(() => assetsDeleted++)
                     .catch((e) => console.error(`Encountered Error: ${e.message}, Skipping...`))

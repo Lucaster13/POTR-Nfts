@@ -1,13 +1,4 @@
-import { loadReachWithOpts } from "@jackcom/reachduck";
-import { loadStdlib } from "@reach-sh/stdlib";
-import { getCids, getNftStorage, REACH_NETWORK, REACH_PROVIDER_ENV, setCid } from "./utils";
-
-// load reach
-loadReachWithOpts(loadStdlib, {
-    chain: "ALGO",
-    network: REACH_NETWORK,
-    providerEnv: REACH_PROVIDER_ENV,
-});
+import { getCids, getNftStorage, setCid } from "./utils";
 
 /*
  Unpin Potrs

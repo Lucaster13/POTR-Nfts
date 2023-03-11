@@ -1,7 +1,7 @@
-import { createReachAPI, ReachAccount } from "@jackcom/reachduck";
-import { AsaId } from "potr-utils/types";
+import { AsaId, ReachAccount } from "potr-types";
 import { makeRateLimiter } from "./common";
-import { ALGOSDK_PARAMS } from "./constants";
+import { ALGOSDK_PARAMS } from "../constants";
+import { createReachApi } from "./stdlib";
 
 export interface MintAsaParams {
     acc: ReachAccount;
@@ -26,9 +26,9 @@ export default makeRateLimiter(60, 60).wrap(
     }: MintAsaParams): Promise<AsaId> => {
         try {
             console.log(`Minting ${name}...`);
-            const reach = createReachAPI();
+            const reach = createReachApi();
 
-            const { algosdk } = reach;
+            const { algosdk } = reach as any;
             const algodClient = new algosdk.Algodv2(...ALGOSDK_PARAMS);
 
             // get initial txn params

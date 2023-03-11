@@ -1,10 +1,10 @@
-import { ReachAccount } from "@jackcom/reachduck";
-import { Arc69Metadata, AsaId, PotrTraits } from "potr-utils/types";
-import { POTR_URL } from "./constants";
+import { Arc69Metadata, AsaId, PotrTraits, ReachAccount } from "potr-types";
+import { POTR_URL } from "../constants";
 import { getPotrIpfsUrl } from "./ipfs";
 import mintAsa, { MintAsaParams } from "./mint-asa.js";
+import { getFileNameFromTraits } from "./traits";
 
-export default async (adminAcc: ReachAccount, id: number, traits: PotrTraits, potrFileName: string) => {
+export default async (adminAcc: ReachAccount, id: number, traits: PotrTraits) => {
     try {
         // create traits metadata object
         const idString = String(id).padStart(4, "0");
@@ -25,7 +25,7 @@ export default async (adminAcc: ReachAccount, id: number, traits: PotrTraits, po
             supply: 1,
             sym: `POTR${idString}`,
             name: `Protector ${idString}`,
-            url: getPotrIpfsUrl(potrFileName),
+            url: getPotrIpfsUrl(getFileNameFromTraits(traits)),
             note: encodedNote,
         };
 
