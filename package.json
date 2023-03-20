@@ -29,7 +29,6 @@
         "multiformats": "^9.7.1",
         "nft.storage": "^7.0.0",
         "node-fetch": "^3.3.0",
-        "potr-types": "github:Lucaster13/POTR-Types",
         "url-parse": "^1.5.10"
     },
     "devDependencies": {

@@ -1,3 +1,4 @@
+import { REACH_NETWORK } from "./constants";
 import { getAdminAcc, getAsaIds, getMetadata, mintPotr, setAsaIds } from "./utils";
 import { getPotrFilesArr } from "./utils/files";
 
@@ -13,9 +14,9 @@ import { getPotrFilesArr } from "./utils/files";
     const retries = await Promise.all(
         potrFiles.map(({ name }, idx) =>
             mintPotr(admin, idx + 1, potrMetadata[idx]) // only add asaId if it does not exist
-                .then((asaId) => !getAsaIds().potr.includes(asaId) && setAsaIds({ potr: [...getAsaIds().potr, asaId] }))
+                .then((asaId) => !getAsaIds()[REACH_NETWORK].potr.includes(asaId) && setAsaIds({ potr: [...getAsaIds()[REACH_NETWORK].potr, asaId] }))
                 .then(() => {
-                    console.log("Successfully updated potr asa ids, num ids:", getAsaIds().potr.length);
+                    console.log("Successfully updated potr asa ids, num ids:", getAsaIds()[REACH_NETWORK].potr.length);
                     return null;
                 })
                 .catch((e) => {
@@ -25,7 +26,7 @@ import { getPotrFilesArr } from "./utils/files";
         )
     );
 
-    console.log("potr asa ids successfully written to json:", getAsaIds().potr.length);
+    console.log("potr asa ids successfully written to json:", getAsaIds()[REACH_NETWORK].potr.length);
 
     console.log(
         "failed to mint the following:",

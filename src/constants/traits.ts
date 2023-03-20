@@ -1,4 +1,4 @@
-import { TraitType } from "potr-types";
+import { TraitType } from "../types";
 
 const RARE_BACKGROUND = ["Gold", "POTR"];
 const RARE_CLASS = ["Phantom", "Archangel", "Golem", "Dragon"];

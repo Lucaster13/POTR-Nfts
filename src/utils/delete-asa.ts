@@ -1,7 +1,7 @@
-import { AsaId, ReachAccount } from "potr-types";
 import { makeRateLimiter } from "./common";
 import { ALGOSDK_PARAMS } from "../constants";
 import { createReachApi } from "./stdlib";
+import { AsaId, ReachAccount } from "../types";
 
 // wrap with rate limit
 export default makeRateLimiter(60, 60).wrap(async (acc: ReachAccount, asaId: AsaId) => {

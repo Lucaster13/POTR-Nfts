@@ -1,16 +1,16 @@
-import { Arc69Metadata, AsaId, CoinType, ReachAccount } from "potr-types";
-import { POTR_URL } from "../constants";
+import { Coin, POTR_URL } from "../constants";
+import { Arc69Metadata, AsaId, ReachAccount } from "../types";
 import { getCoinIpfsUrl } from "./ipfs";
 import mintAsa, { MintAsaParams } from "./mint-asa.js";
 
 // params for coin asa's
-const coinInfo: Record<CoinType, [string, string, number]> = {
+const coinInfo: Record<Coin, [string, string, number]> = {
     bronze: ["Bronze Coin", "POTRBC", 1000],
     silver: ["Silver Coin", "POTRSC", 500],
     gold: ["Gold Coin", "POTRGC", 100],
 };
 
-export default async (acc: ReachAccount, coinType: CoinType): Promise<AsaId> => {
+export default async (acc: ReachAccount, coinType: Coin): Promise<AsaId> => {
     try {
         // get coin info based on type
         const [name, sym, supply] = coinInfo[coinType];

@@ -5,6 +5,13 @@ const COIN_RARITY_WEIGHTS = {
     gold: 1.0,
 };
 
-const COIN_TYPES = ["bronze", "silver", "gold"];
+const enum Coin {
+    BRONZE = "bronze",
+    SILVER = "silver",
+    GOLD = "gold",
+}
 
-export { COIN_RARITY_WEIGHTS, COIN_TYPES };
+// convenience for ease of use with high order functions
+const COIN_TYPES: Coin[] = [Coin.BRONZE, Coin.SILVER, Coin.GOLD];
+
+export { COIN_RARITY_WEIGHTS, COIN_TYPES, Coin };

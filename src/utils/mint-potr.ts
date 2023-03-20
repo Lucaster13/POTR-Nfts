@@ -1,5 +1,5 @@
-import { Arc69Metadata, AsaId, PotrTraits, ReachAccount } from "potr-types";
 import { POTR_URL } from "../constants";
+import { Arc69Metadata, AsaId, PotrTraits, ReachAccount } from "../types";
 import { getPotrIpfsUrl } from "./ipfs";
 import mintAsa, { MintAsaParams } from "./mint-asa.js";
 import { getFileNameFromTraits } from "./traits";

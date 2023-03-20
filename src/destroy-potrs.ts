@@ -1,3 +1,4 @@
+import { REACH_NETWORK } from "./constants";
 import { deleteAsa, getAdminAcc, getAsaIds, isAsaIdArray, setAsaIds } from "./utils";
 
 /*
@@ -10,7 +11,7 @@ import { deleteAsa, getAdminAcc, getAsaIds, isAsaIdArray, setAsaIds } from "./ut
     const admin = await getAdminAcc();
 
     // read potr asa ids
-    const potrAsaIds = getAsaIds().potr;
+    const potrAsaIds = getAsaIds()[REACH_NETWORK].potr;
 
     // if no ids, return
     if (!isAsaIdArray(potrAsaIds) || !potrAsaIds.length) throw new Error("No Potrs to destroy");
@@ -21,7 +22,7 @@ import { deleteAsa, getAdminAcc, getAsaIds, isAsaIdArray, setAsaIds } from "./ut
     await Promise.all(
         potrAsaIds.map((asaId) =>
             deleteAsa(admin, asaId)
-                .then(() => setAsaIds({ potr: getAsaIds().potr.filter((id) => id !== asaId) }))
+                .then(() => setAsaIds({ potr: getAsaIds()[REACH_NETWORK].potr.filter((id) => id !== asaId) }))
                 .then(() => potrsDeleted++)
                 .catch((e) => console.error(e.message))
         )

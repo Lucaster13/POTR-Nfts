@@ -1,3 +1,4 @@
+import { REACH_NETWORK } from "./constants";
 import { deleteAsa, getAdminAcc, getAsaIds, isAsaIdArray, setAsaIds } from "./utils";
 
 /*
@@ -6,7 +7,7 @@ import { deleteAsa, getAdminAcc, getAsaIds, isAsaIdArray, setAsaIds } from "./ut
 (async () => {
     // get admin account
     const admin = await getAdminAcc();
-    const coinAsaIds = getAsaIds().coin;
+    const coinAsaIds = getAsaIds()[REACH_NETWORK].coin;
 
     // if no ids, stop
     if (!isAsaIdArray(coinAsaIds) || !coinAsaIds.length) return;

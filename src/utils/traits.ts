@@ -1,6 +1,6 @@
-import { PotrTraits, TraitType } from "potr-types";
 import { TRAIT_WEIGHTS } from "../data";
 import { CLASS_DEPENDENT_TRAIT_TYPES, TRAIT_TYPES } from "../constants";
+import { PotrTraits, TraitType } from "../types";
 
 // for each trait get its index in the json object and pad with one '0', then concatenate together and prepend with power
 function getFileNameFromTraits(traits: PotrTraits) {

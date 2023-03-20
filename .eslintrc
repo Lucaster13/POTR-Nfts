@@ -45,6 +45,8 @@
         "no-plusplus": "off",
         "no-loop-func": "off",
         "consistent-return": "off",
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error"
     }
 }

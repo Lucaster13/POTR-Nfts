@@ -1,5 +1,4 @@
-import { CoinType } from "potr-types";
-import { COIN_TYPES } from "./constants";
+import { Coin, COIN_TYPES, REACH_NETWORK } from "./constants";
 import { getAdminAcc, getAsaIds, getCids, setAsaIds } from "./utils";
 import mintCoin from "./utils/mint-coin";
 
@@ -12,7 +11,7 @@ import mintCoin from "./utils/mint-coin";
     }
 
     // for each coin cid, mint the coin
-    await Promise.all(COIN_TYPES.map((coinType) => mintCoin(admin, coinType as CoinType)))
+    await Promise.all(COIN_TYPES.map((coinType) => mintCoin(admin, coinType as Coin)))
         .then((asaIds) => setAsaIds({ coin: asaIds }))
-        .then(() => console.log("Success minting coins", getAsaIds().coin));
+        .then(() => console.log("Success minting coins", getAsaIds()[REACH_NETWORK].coin));
 })();

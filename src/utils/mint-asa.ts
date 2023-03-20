@@ -1,7 +1,7 @@
-import { AsaId, ReachAccount } from "potr-types";
 import { makeRateLimiter } from "./common";
 import { ALGOSDK_PARAMS } from "../constants";
 import { createReachApi } from "./stdlib";
+import { AsaId, ReachAccount } from "../types";
 
 export interface MintAsaParams {
     acc: ReachAccount;

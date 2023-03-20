@@ -1,5 +1,5 @@
 // REACH CONSTANTS
-const REACH_NETWORK = "TestNet";
+const REACH_NETWORK = process.env.NODE_ENV === "prod" ? "MainNet" : "TestNet";
 const ALGO_SERVER_PREFIX = `https://${REACH_NETWORK.toLowerCase()}`;
 const ALGO_SERVER = `${ALGO_SERVER_PREFIX}-api.algonode.cloud`;
 const ALGO_INDEXER_SERVER = `${ALGO_SERVER_PREFIX}-idx.algonode.cloud`;
@@ -12,4 +12,10 @@ const REACH_STDLIB_ENV = {
     ALGO_SERVER,
 };
 
-export { REACH_NETWORK, ALGO_SERVER_PREFIX, ALGO_SERVER, ALGO_INDEXER_SERVER, ASSET_TRANSACTION_URL, ASSET_METADATA_URL, REACH_STDLIB_ENV };
+const enum ReachProvider {
+    PERA = "pera",
+    MY_ALGO = "my-algo",
+    MNEMONIC = "mnemonic",
+}
+
+export { REACH_NETWORK, ALGO_SERVER_PREFIX, ALGO_SERVER, ALGO_INDEXER_SERVER, ASSET_TRANSACTION_URL, ASSET_METADATA_URL, REACH_STDLIB_ENV, ReachProvider };
