@@ -1,52 +1,26 @@
 {
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 2022,
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "settings": {
-        "import/resolver": {
-            "typescript": true,
-            "node": true
-        }
-    },
-    "parser": "@typescript-eslint/parser",
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "plugins": ["react-hooks", "@typescript-eslint"],
-    "extends": [
-        "eslint:recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:json/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:import/typescript",
-        "airbnb",
-        "prettier"
-    ],
-    "rules": {
-        "camelcase": "off",
-        "@typescript-eslint/ban-ts-comment": "warn",
-        "import/extensions": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "import/prefer-default-export": "off",
-        "no-param-reassign": "off",
-        "no-await-in-loop": "off",
-        "no-nested-ternary": "off",
-        "no-return-assign": "off",
-        "@typescript-eslint/no-unused-vars": "error",
-        "no-console": "off",
-        "no-promise-executor-return": "off",
-        "no-constant-condition": "off",
-        "no-plusplus": "off",
-        "no-loop-func": "off",
-        "consistent-return": "off",
-        "no-use-before-define": "off",
-        "no-shadow": "off",
-        "@typescript-eslint/no-shadow": "error"
-    }
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+
+	"extends": ["airbnb", "airbnb-typescript", "prettier"],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"parser": "@typescript-eslint/parser",
+	"rules": {
+		"@typescript-eslint/no-explicit-any": "warn",
+		"@typescript-eslint/no-use-before-define": "off",
+		"import/prefer-default-export": "off",
+		"consistent-return": "off",
+		"no-await-in-loop": "off",
+		"import/extensions": "off",
+		"no-plusplus": "off"
+	}
 }

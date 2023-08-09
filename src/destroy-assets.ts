@@ -1,6 +1,6 @@
-import axios from "axios";
-import { ALGO_INDEXER_SERVER } from "./constants";
-import { createReachApi, deleteAsa, getAdminAcc } from "./utils";
+import { ASA_IDS, REACH_NETWORK, getOwnedPotrAsaIds } from "potr-common";
+import { deleteAsa, getAdminAcc } from "./utils";
+import safeCall from "./utils/safe-call";
 
 /*
     DELETE ALL ASSETS
@@ -8,34 +8,35 @@ import { createReachApi, deleteAsa, getAdminAcc } from "./utils";
     NOTE: Only use this as the potr admin, it will delete all of the assets within your account that you have created
 */
 (async () => {
-    const reach = createReachApi();
-    const admin = await getAdminAcc();
+	const admin = await getAdminAcc();
 
-    const assetUrl = `${ALGO_INDEXER_SERVER}/v2/accounts/${reach.formatAddress(admin)}/assets`;
+	while (true) {
+		console.log("Loading assets...");
 
-    while (true) {
-        console.log("Loading assets...");
+		const potrIds = await getOwnedPotrAsaIds(admin.networkAccount.addr);
+		const coinIds = ASA_IDS[REACH_NETWORK].coin;
+		const ids = [...potrIds, ...coinIds];
 
-        const { data } = await axios.get(assetUrl);
+		if (!ids.length) {
+			console.log("No more assets to destroy");
+			break;
+		} else {
+			console.log(ids.length, "assets found");
+		}
 
-        if (!data.assets.length) {
-            console.log("No more assets to destroy");
-            break;
-        } else {
-            console.log(data.assets.length, "assets found");
-        }
+		// attempt to delete assets
+		let assetsDeleted = 0;
 
-        // attempt to delete assets
-        let assetsDeleted = 0;
+		await Promise.all(
+			ids.map((id) =>
+				safeCall(() =>
+					deleteAsa(admin, id)
+						.then(() => assetsDeleted++)
+						.catch((e) => console.error(`Encountered Error: ${e.message}, Skipping...`)),
+				),
+			),
+		);
 
-        await Promise.all(
-            data.assets.map(({ "asset-id": id }) =>
-                deleteAsa(admin, id)
-                    .then(() => assetsDeleted++)
-                    .catch((e) => console.error(`Encountered Error: ${e.message}, Skipping...`))
-            )
-        );
-
-        console.log(`\n\nDestroyed ${assetsDeleted} assets successfully\n\n`);
-    }
+		console.log(`\n\nDestroyed ${assetsDeleted} assets successfully\n\n`);
+	}
 })();

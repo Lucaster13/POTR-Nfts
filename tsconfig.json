@@ -1,18 +1,18 @@
 {
-    "compilerOptions": {
-        "module": "ESNext",
-        "target": "ESNext",
-        "moduleResolution": "Node",
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "outDir": "/dist",
-        "noEmit": true
-    },
-    "ts-node": {
-        "esm": true,
-        "experimentalSpecifierResolution": "node"
-    },
-    "compileOnSave": true,
-    "include": ["./src/**/*"],
-    "exclude": ["node_modules"]
+	"compilerOptions": {
+		"module": "ESNext",
+		"target": "ESNext",
+		"moduleResolution": "Node",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"outDir": "/dist",
+		"noEmit": true
+	},
+	"ts-node": {
+		"esm": true,
+		"experimentalSpecifierResolution": "node"
+	},
+	"compileOnSave": true,
+	"include": ["./src/**/*"],
+	"exclude": ["node_modules"]
 }

@@ -1,9 +1,8 @@
-import { ACCOUNTS, REACH_NETWORK } from "../constants";
-import { ReachAccount } from "../types";
-import { createReachApi } from "./stdlib";
+import { makeReach, REACH_NETWORK, ReachAccountT } from "potr-common";
+import { ACCOUNTS } from "../constants/.secrets";
 
-export default async (): Promise<ReachAccount> => {
-    const reach = createReachApi();
-    const admin: ReachAccount = await reach.newAccountFromMnemonic(ACCOUNTS[REACH_NETWORK].admin.mnemonic);
-    return admin;
+export default async (): Promise<ReachAccountT> => {
+	const reach = makeReach();
+	const admin: ReachAccountT = await reach.newAccountFromMnemonic(ACCOUNTS[REACH_NETWORK].admin.mnemonic);
+	return admin;
 };
