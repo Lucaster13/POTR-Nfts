@@ -49,15 +49,20 @@ export async function safeCall<T>(rateLimitedFn: () => Promise<T>) {
 }
 
 // RESOLVING IPFS URL, CID, RESERVE ADDRESS
-export function getCIDFromReserveAddr(url: string, reserveAddr: string): CID {
+export function getCIDFromReserveAddr(reserveAddr: string): string {
 	// get 32 bytes Uint8Array reserve address - treating it as 32-byte sha2-256 hash
 	const addr = decodeAddress(reserveAddr);
 	const mhdigest = digest.create(sha2.sha256.code, addr.publicKey);
 	const cid = CID.create(1, 0x55, mhdigest);
-	return cid;
+	return cid.toString();
 }
 
-export function getReserveAddrFromCID(cidString: string) {
+export function getReserveAddrFromCID(cidString: string): string {
 	const cid = CID.parse(cidString);
-	return encodeAddress(cid.multihash.digest);
+	const reserveAddr = encodeAddress(cid.multihash.digest);
+	const cidCheck = getCIDFromReserveAddr(reserveAddr);
+	if (cid.toString() !== cidCheck) {
+		throw new Error(`CIDs did not match ${cid.toString()} !== ${cidCheck}`);
+	}
+	return reserveAddr;
 }

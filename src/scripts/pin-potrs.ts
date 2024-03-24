@@ -3,7 +3,7 @@ import { getPotrFiles, writeToJson } from "../lib/utils";
 
 // pins every asset inside /nfts folder to ipfs
 (async () => {
-	const files = await getPotrFiles().then((f) => [f[0]]);
+	const files = await getPotrFiles();
 
 	console.log(`pinning ${files.length} file(s) from /nfts`);
 
