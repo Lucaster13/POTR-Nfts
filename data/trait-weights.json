@@ -1,0 +1,57 @@
+{
+	"Background": {
+		"traits": [
+			"Gray",
+			"Light Blue",
+			"Orange",
+			"Red",
+			"Green",
+			"Light Red",
+			"Purple",
+			"Blue",
+			"Light Purple",
+			"Teal",
+			"Dark",
+			"Gold",
+			"POTR"
+		],
+		"weights": [200, 200, 200, 150, 150, 100, 100, 100, 80, 70, 60, 50, 40]
+	},
+	"Class": {
+		"traits": ["Human", "Berserker", "Ranger", "Wizard", "Crusader", "Necromancer", "Assassin", "Archangel"],
+		"weights": [350, 300, 300, 300, 100, 75, 50, 25]
+	},
+	"Body": {
+		"traits": ["None"],
+		"weights": [1500]
+	},
+	"Head": {
+		"traits": ["Blond Hair", "Brown Hair", "None", "Buzzcut"],
+		"weights": [600, 600, 200, 100]
+	},
+	"Eyes": {
+		"traits": [
+			"Black",
+			"Blue",
+			"Stone",
+			"Light",
+			"Laser",
+			"X",
+			"Closed",
+			"One Eye",
+			"Wink",
+			"Crystal",
+			"Ancient",
+			"Thug Life"
+		],
+		"weights": [300, 250, 200, 150, 120, 100, 100, 100, 80, 50, 40, 10]
+	},
+	"Mouth": {
+		"traits": ["Normal"],
+		"weights": [1]
+	},
+	"Back": {
+		"traits": ["None"],
+		"weights": [1]
+	}
+}
