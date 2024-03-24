@@ -1,4 +1,4 @@
-import { getAdminAcc, getPotrAsaIdsInWallet } from "../lib/algo";
+import { Algo, getAdminAcc } from "potr-common";
 import { safeCall } from "../lib/utils";
 import deleteAsa from "./delete-asa";
 
@@ -13,7 +13,7 @@ import deleteAsa from "./delete-asa";
 	while (true) {
 		console.log("Loading assets...");
 
-		const potrIds = (await getPotrAsaIdsInWallet(admin.addr)) as unknown as any[];
+		const potrIds = (await Algo.getPotrAsaIdsInWallet(admin.addr)) as unknown as any[];
 		const ids = [...potrIds];
 
 		if (!ids.length) {

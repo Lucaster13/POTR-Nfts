@@ -1,6 +1,5 @@
 import { Account } from "algosdk";
-import { Arc69Metadata, IPFS_TEMPLATE_URL, PotrTraits } from "potr-common";
-import { POTR_URL } from "../lib/constants";
+import { Arc69Metadata, IPFS_TEMPLATE_URL, POTR_URL, PotrTraits } from "potr-common";
 import mintAsa, { MintAsaParams } from "./mint-asa.js";
 
 export default async (adminAcc: Account, id: number, traits: PotrTraits, cid: string) => {
@@ -9,7 +8,7 @@ export default async (adminAcc: Account, id: number, traits: PotrTraits, cid: st
 		const idString = String(id).padStart(4, "0");
 		const metadata: Arc69Metadata = {
 			standard: "arc69",
-			description: `Protectors of The Rand - #${idString}`,
+			description: `Protectors of The Rand NFT - #${idString}`,
 			external_url: POTR_URL,
 			mime_type: "image/png",
 			properties: traits,
@@ -23,7 +22,7 @@ export default async (adminAcc: Account, id: number, traits: PotrTraits, cid: st
 			acc: adminAcc,
 			supply: 1,
 			sym: `POTR${idString}`,
-			name: `Protector ${idString}`,
+			name: `POTR #${idString}`,
 			url: IPFS_TEMPLATE_URL,
 			note: encodedNote,
 			cid,

@@ -1,7 +1,6 @@
-import { PotrTraits } from "potr-common";
+import { PotrTraits, getAdminAcc, getAlgoNetwork } from "potr-common";
 import { POTR_CIDS, POTR_TRAITS } from "../../data";
 import { safeCall, writeToJson } from "../lib/utils";
-import { getAdminAcc, getAlgoNetwork } from "../lib/algo";
 import mint from "./mint-potr";
 
 // MINTS ALL ASSETS IN CIDS OBJECT
@@ -17,6 +16,6 @@ import mint from "./mint-potr";
 
 	const potrAsaIds = await Promise.all(potrCids.map(mintPotr));
 
-	writeToJson(potrAsaIds, `potr-asa-ids-${getAlgoNetwork()}`);
+	writeToJson(potrAsaIds, `potr-asa-ids-${getAlgoNetwork()}`.toLowerCase());
 	console.log("potr asa ids successfully written to json:", potrAsaIds.length);
 })();

@@ -1,6 +1,5 @@
-import { algorandConfig, makeRateLimiter } from "potr-common";
+import { algod, algorandConfig, makeRateLimiter } from "potr-common";
 import algosdk, { Account } from "algosdk";
-import { algod } from "../lib/algo";
 
 // wrap with rate limit
 export default makeRateLimiter(...algorandConfig.tps).wrap(async (acc: Account, asaId: number) => {

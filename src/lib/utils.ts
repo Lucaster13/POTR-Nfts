@@ -1,8 +1,4 @@
 import { filesFromPaths } from "files-from-path";
-import { CID } from "multiformats";
-import * as sha2 from "multiformats/hashes/sha2";
-import * as digest from "multiformats/hashes/digest";
-import { decodeAddress, encodeAddress } from "algosdk";
 import fs, { promises as fsPromises } from "fs";
 import { DATA_PATH_PREFIX, NFT_PATH_PREFIX } from "../constants/paths";
 
@@ -46,23 +42,4 @@ export async function safeCall<T>(rateLimitedFn: () => Promise<T>) {
 			console.log("failed:", e.message, "- retrying...");
 		}
 	}
-}
-
-// RESOLVING IPFS URL, CID, RESERVE ADDRESS
-export function getCIDFromReserveAddr(reserveAddr: string): string {
-	// get 32 bytes Uint8Array reserve address - treating it as 32-byte sha2-256 hash
-	const addr = decodeAddress(reserveAddr);
-	const mhdigest = digest.create(sha2.sha256.code, addr.publicKey);
-	const cid = CID.create(1, 0x55, mhdigest);
-	return cid.toString();
-}
-
-export function getReserveAddrFromCID(cidString: string): string {
-	const cid = CID.parse(cidString);
-	const reserveAddr = encodeAddress(cid.multihash.digest);
-	const cidCheck = getCIDFromReserveAddr(reserveAddr);
-	if (cid.toString() !== cidCheck) {
-		throw new Error(`CIDs did not match ${cid.toString()} !== ${cidCheck}`);
-	}
-	return reserveAddr;
 }

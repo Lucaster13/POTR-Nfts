@@ -1,7 +1,5 @@
-import { algorandConfig, makeRateLimiter } from "potr-common";
+import { algod, algorandConfig, getReserveAddrFromCID, makeRateLimiter } from "potr-common";
 import algosdk, { Account } from "algosdk";
-import { algod } from "../lib/algo";
-import { getReserveAddrFromCID } from "../lib/utils";
 
 export interface MintAsaParams {
 	acc: Account;
