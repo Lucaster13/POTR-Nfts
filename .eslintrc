@@ -23,5 +23,6 @@
 		"import/extensions": "off",
 		"no-plusplus": "off",
 		"radix": "off",
+		"no-console": "off",
 	},
 }

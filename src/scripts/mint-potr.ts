@@ -22,27 +22,18 @@ export default async (adminAcc: Account, id: number, traits: PotrTraits, cid: st
 			acc: adminAcc,
 			supply: 1,
 			sym: `POTR${idString}`,
-			name: `POTR #${idString}`,
-			url: `${IPFS_TEMPLATE_URL}#arc3`,
-			note: encodedNote,
-			cid,
-		};
-		const mintParams3: MintAsaParams = {
-			acc: adminAcc,
-			supply: 1,
-			sym: `POTR${idString}`,
-			name: `POTR #${idString}`,
+			name: `Protector ${idString}`,
 			url: IPFS_TEMPLATE_URL,
 			note: encodedNote,
 			cid,
 		};
 
 		// mint potr
-		const asaIds = await Promise.all([mintParams, mintParams3].map(mintAsa));
-		console.log(`Mint Success - POTR${idString}`, asaIds);
+		const asaId = await mintAsa(mintParams);
+		console.log(`Mint Success - POTR${idString}`, asaId);
 
 		// return asa id and cid
-		return asaIds;
+		return asaId;
 	} catch (e) {
 		throw new Error(e.message);
 	}

@@ -51,7 +51,7 @@ export default makeRateLimiter(...algorandConfig.tps).wrap(
 			const manager = addr;
 			// Specified address is considered the asset reserve
 			// (it has no special privileges, this is only informational)
-			const reserve = cid ? getReserveAddrFromCID(cid) : addr;
+			const reserve = cid ? getReserveAddrFromCID(url, cid) : addr;
 			// Specified address can freeze or unfreeze user asset holdings
 			const freeze = addr;
 			// Specified address can revoke user asset holdings and send them to other addresses

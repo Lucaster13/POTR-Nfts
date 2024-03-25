@@ -23,7 +23,7 @@
     "js-sha256": "^0.11.0",
     "multiformats": "^13.1.0",
     "nft.storage": "^7.1.1",
-    "potr-common": "^1.1.4"
+    "potr-common": "latest"
   },
   "devDependencies": {
     "bun": "^1.0.32",

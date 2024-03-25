@@ -8,7 +8,7 @@ import mint from "./mint-potr";
 	const admin = await Algo.getAdminAcc();
 
 	const potrMetadata = POTR_TRAITS as unknown[] as PotrTraits[];
-	const potrCids = POTR_CIDS.slice(0, 1);
+	const potrCids = POTR_CIDS;
 
 	console.log("minting", potrCids.length, "potrs");
 
