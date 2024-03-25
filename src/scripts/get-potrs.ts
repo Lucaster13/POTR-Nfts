@@ -4,7 +4,7 @@ import { safeCall, writeToJson } from "../lib/utils";
 (async () => {
 	const adminAddr = Algo.getAdminAddr();
 	const asaIds = await Algo.getAllAssetIdsInWallet(adminAddr).then((ids) => ids.asaIds.slice(0, 100));
-	console.log("found potr asa Id", asaIds.length);
+	console.log("found potr asa ids:", asaIds.length);
 
 	const getPotrMetadata = (asaId: number) =>
 		safeCall(() => {
