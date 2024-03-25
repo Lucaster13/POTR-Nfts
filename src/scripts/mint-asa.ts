@@ -1,4 +1,4 @@
-import { algod, algorandConfig, getReserveAddrFromCID, makeRateLimiter } from "potr-common";
+import { Algo, algorandConfig, getReserveAddrFromCID, makeRateLimiter } from "potr-common";
 import algosdk, { Account } from "algosdk";
 
 export interface MintAsaParams {
@@ -31,7 +31,7 @@ export default makeRateLimiter(...algorandConfig.tps).wrap(
 			}
 
 			// get initial txn params
-			const params = await algod.getTransactionParams().do();
+			const params = await Algo.algod.getTransactionParams().do();
 
 			// Asset creation specific parameters (immutable)
 			const { addr, sk } = acc;
@@ -80,10 +80,10 @@ export default makeRateLimiter(...algorandConfig.tps).wrap(
 
 			const rawSignedTxn = txn.signTxn(sk);
 
-			const tx = await algod.sendRawTransaction(rawSignedTxn).do();
+			const tx = await Algo.algod.sendRawTransaction(rawSignedTxn).do();
 
 			// wait for transaction to be confirmed
-			const ptx = await algosdk.waitForConfirmation(algod, tx.txId, 4);
+			const ptx = await algosdk.waitForConfirmation(Algo.algod, tx.txId, 4);
 
 			// Get the new asset's information from the creator account
 			const assetID = ptx["asset-index"];

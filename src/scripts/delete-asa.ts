@@ -1,4 +1,4 @@
-import { algod, algorandConfig, makeRateLimiter } from "potr-common";
+import { Algo, algorandConfig, makeRateLimiter } from "potr-common";
 import algosdk, { Account } from "algosdk";
 
 // wrap with rate limit
@@ -14,7 +14,7 @@ export default makeRateLimiter(...algorandConfig.tps).wrap(async (acc: Account, 
 		// before every transaction in this example
 		console.log(`Deleting ${asaId}...`);
 
-		const params = await algod.getTransactionParams().do();
+		const params = await Algo.algod.getTransactionParams().do();
 
 		// The address for the from field must be the manager account
 		// Which is currently the creator addr
@@ -25,10 +25,10 @@ export default makeRateLimiter(...algorandConfig.tps).wrap(async (acc: Account, 
 		// the asset creator can sign and issue "txn" to remove the asset from the ledger.
 		const dtxn = algosdk.makeAssetDestroyTxnWithSuggestedParams(addr, note, asaId, params);
 		const rawSignedTxn = dtxn.signTxn(sk);
-		const dtx = await algod.sendRawTransaction(rawSignedTxn).do();
+		const dtx = await Algo.algod.sendRawTransaction(rawSignedTxn).do();
 
 		// Wait for confirmation
-		await algosdk.waitForConfirmation(algod, dtx.txId, 4);
+		await algosdk.waitForConfirmation(Algo.algod, dtx.txId, 4);
 
 		// Get the completed Transaction
 		console.log(`Successfully deleted ${asaId}`);

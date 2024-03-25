@@ -1,14 +1,14 @@
-import { PotrTraits, getAdminAcc, getAlgoNetwork } from "potr-common";
+import { PotrTraits, Algo } from "potr-common";
 import { POTR_CIDS, POTR_TRAITS } from "../../data";
 import { safeCall, writeToJson } from "../lib/utils";
 import mint from "./mint-potr";
 
 // MINTS ALL ASSETS IN CIDS OBJECT
 (async () => {
-	const admin = await getAdminAcc();
+	const admin = await Algo.getAdminAcc();
 
 	const potrMetadata = POTR_TRAITS as unknown[] as PotrTraits[];
-	const potrCids = POTR_CIDS;
+	const potrCids = POTR_CIDS.slice(0, 1);
 
 	console.log("minting", potrCids.length, "potrs");
 
@@ -16,6 +16,6 @@ import mint from "./mint-potr";
 
 	const potrAsaIds = await Promise.all(potrCids.map(mintPotr));
 
-	writeToJson(potrAsaIds, `potr-asa-ids-${getAlgoNetwork()}`.toLowerCase());
+	writeToJson(potrAsaIds, `potr-asa-ids-${Algo.getAlgoNetwork()}`.toLowerCase());
 	console.log("potr asa ids successfully written to json:", potrAsaIds.length);
 })();
