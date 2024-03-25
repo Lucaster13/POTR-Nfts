@@ -1,45 +1,45 @@
 {
-  "type": "module",
-  "scripts": {
-    "pin-potrs": "bun ./src/scripts/pin-potrs.ts",
-    "pin-all-assets": "bun run pin-coins && bun run pin-potrs",
-    "unpin-potrs": "bun ./src/scripts/unpin-potrs.ts",
-    "unpin-all-assets": "bun run unpin-coins && bun run unpin-potrs",
-    "mint-potrs": "bun ./src/scripts/mint-potrs.ts",
-    "mint-all-assets": "bun run mint-coins && bun run mint-potrs",
-    "delete-all-assets": "bun ./src/scripts/delete-all-assets.ts",
-    "clean-all-assets": "bun run force-delete-all-assets && bun run unpin-all-assets",
-    "get-potr": "bun run ./src/scripts/get-potr.ts",
-    "clean": "rm -rf node_modules dist",
-    "build": "eslint . --fix && prettier . --write && tsc"
-  },
-  "dependencies": {
-    "@algorandfoundation/algokit-utils": "^5.7.0",
-    "algosdk": "^2.7.0",
-    "axios": "^1.3.4",
-    "bottleneck": "^2.19.5",
-    "exponential-backoff": "^3.1.1",
-    "files-from-path": "^1.0.4",
-    "js-sha256": "^0.11.0",
-    "multiformats": "^13.1.0",
-    "nft.storage": "^7.1.1",
-    "potr-common": "^1.1.10"
-  },
-  "devDependencies": {
-    "bun": "^1.0.32",
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/plugin-syntax-import-assertions": "^7.18.6",
-    "@types/node": "^20.11.29",
-    "@typescript-eslint/eslint-plugin": "^6.3.0",
-    "@typescript-eslint/parser": "^7.3.1",
-    "bun-types": "latest",
-    "eslint": "^8.46.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-config-prettier": "^9.0.0",
-    "prettier": "^3.2.5",
-    "typescript": "^4.8.2"
-  },
-  "name": "potr-nfts",
-  "module": "index.ts"
+	"type": "module",
+	"scripts": {
+		"pin-potrs": "bun ./src/scripts/pin-potrs.ts",
+		"pin-all-assets": "bun run pin-coins && bun run pin-potrs",
+		"unpin-potrs": "bun ./src/scripts/unpin-potrs.ts",
+		"unpin-all-assets": "bun run unpin-coins && bun run unpin-potrs",
+		"mint-potrs": "bun ./src/scripts/mint-potrs.ts",
+		"mint-all-assets": "bun run mint-coins && bun run mint-potrs",
+		"delete-all-assets": "bun ./src/scripts/delete-all-assets.ts",
+		"clean-all-assets": "bun run force-delete-all-assets && bun run unpin-all-assets",
+		"get-potrs": "bun run ./src/scripts/get-potrs.ts",
+		"clean": "rm -rf node_modules dist",
+		"build": "eslint . --fix && prettier . --write && tsc"
+	},
+	"dependencies": {
+		"@algorandfoundation/algokit-utils": "^5.7.0",
+		"algosdk": "^2.7.0",
+		"axios": "^1.3.4",
+		"bottleneck": "^2.19.5",
+		"exponential-backoff": "^3.1.1",
+		"files-from-path": "^1.0.4",
+		"js-sha256": "^0.11.0",
+		"multiformats": "^13.1.0",
+		"nft.storage": "^7.1.1",
+		"potr-common": "^1.1.10"
+	},
+	"devDependencies": {
+		"bun": "^1.0.32",
+		"@babel/eslint-parser": "^7.23.10",
+		"@babel/plugin-syntax-import-assertions": "^7.18.6",
+		"@types/node": "^20.11.29",
+		"@typescript-eslint/eslint-plugin": "^6.3.0",
+		"@typescript-eslint/parser": "^7.3.1",
+		"bun-types": "latest",
+		"eslint": "^8.46.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-airbnb-typescript": "^17.1.0",
+		"eslint-config-prettier": "^9.0.0",
+		"prettier": "^3.2.5",
+		"typescript": "^4.8.2"
+	},
+	"name": "potr-nfts",
+	"module": "index.ts"
 }
